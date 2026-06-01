@@ -1,5 +1,11 @@
 {
-  "buildCommand": "npx prisma generate && npx prisma db push --accept-data-loss && next build",
+  "buildCommand": "npx prisma generate && next build",
   "installCommand": "npm install",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "functions": {
+    "src/app/api/**/route.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }
