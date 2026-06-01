@@ -103,10 +103,10 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
           return (
             <Card
               key={i}
-              className="overflow-hidden group hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border-0 shadow-sm cursor-default"
+              className="relative overflow-hidden group hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border-0 shadow-sm cursor-default"
             >
               {/* Subtle gradient background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${card.gradientBg} opacity-50 group-hover:opacity-80 transition-opacity duration-300`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${card.gradientBg} opacity-50 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none`} />
               <div className="relative">
                 <div className={`h-1 bg-gradient-to-r ${card.gradient}`} />
                 <CardContent className="p-5">
