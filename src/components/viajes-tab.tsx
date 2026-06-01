@@ -54,10 +54,13 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
       if (filters.fechaDesde) params.set('fechaDesde', filters.fechaDesde)
       if (filters.fechaHasta) params.set('fechaHasta', filters.fechaHasta)
       const res = await fetch(`/api/viajes?${params.toString()}`)
+      if (!res.ok) throw new Error('Error en la respuesta')
       const data = await res.json()
+      if (!Array.isArray(data)) throw new Error('Respuesta inválida')
       setViajes(data)
     } catch {
       toast.error('Error al cargar viajes')
+      setViajes([])
     } finally {
       setLoading(false)
     }

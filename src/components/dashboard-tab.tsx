@@ -55,42 +55,42 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
       title: 'Total Volquetas',
       value: stats.totalVolquetas,
       icon: Truck,
-      color: 'emerald',
+      gradient: 'from-emerald-500 to-emerald-600',
+      gradientBg: 'from-emerald-50 to-emerald-100/60',
+      iconBg: 'bg-emerald-500',
       detail: (
         <div className="flex gap-2 mt-2">
           <Badge variant="outline" className="text-emerald-700 bg-emerald-50 text-xs border-emerald-200">{stats.volquetasDisponibles} disponibles</Badge>
           <Badge variant="outline" className="text-amber-700 bg-amber-50 text-xs border-amber-200">{stats.volquetasEnViaje} en viaje</Badge>
         </div>
       ),
-      gradient: 'from-emerald-500 to-emerald-600',
-      bgLight: 'bg-emerald-50',
     },
     {
       title: 'Viajes del Mes',
       value: stats.viajesMes,
       icon: ArrowRightLeft,
-      color: 'teal',
-      detail: <p className="text-xs text-muted-foreground mt-1">Viajes realizados este mes</p>,
       gradient: 'from-teal-500 to-teal-600',
-      bgLight: 'bg-teal-50',
+      gradientBg: 'from-teal-50 to-teal-100/60',
+      iconBg: 'bg-teal-500',
+      detail: <p className="text-xs text-muted-foreground mt-1">Viajes realizados este mes</p>,
     },
     {
       title: 'Ingresos del Mes',
       value: formatCurrency(stats.ingresosMes),
       icon: DollarSign,
-      color: 'emerald',
+      gradient: 'from-green-500 to-emerald-600',
+      gradientBg: 'from-green-50 to-emerald-100/60',
+      iconBg: 'bg-green-500',
       detail: <p className="text-xs text-muted-foreground mt-1">Total facturado este mes</p>,
-      gradient: 'from-emerald-600 to-green-600',
-      bgLight: 'bg-green-50',
     },
     {
       title: 'Disponibilidad',
       value: `${disponibilidad}%`,
       icon: Activity,
-      color: disponibilidad >= 70 ? 'emerald' : disponibilidad >= 40 ? 'amber' : 'red',
-      detail: <p className="text-xs text-muted-foreground mt-1">Volquetas disponibles</p>,
       gradient: disponibilidad >= 70 ? 'from-emerald-500 to-emerald-600' : disponibilidad >= 40 ? 'from-amber-500 to-amber-600' : 'from-red-500 to-red-600',
-      bgLight: disponibilidad >= 70 ? 'bg-emerald-50' : disponibilidad >= 40 ? 'bg-amber-50' : 'bg-red-50',
+      gradientBg: disponibilidad >= 70 ? 'from-emerald-50 to-emerald-100/60' : disponibilidad >= 40 ? 'from-amber-50 to-amber-100/60' : 'from-red-50 to-red-100/60',
+      iconBg: disponibilidad >= 70 ? 'bg-emerald-500' : disponibilidad >= 40 ? 'bg-amber-500' : 'bg-red-500',
+      detail: <p className="text-xs text-muted-foreground mt-1">Volquetas disponibles</p>,
     },
   ]
 
@@ -101,20 +101,27 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
         {statCards.map((card, i) => {
           const Icon = card.icon
           return (
-            <Card key={i} className="overflow-hidden group hover:shadow-lg transition-all duration-300 border-0 shadow-sm">
-              <div className={`h-1 bg-gradient-to-r ${card.gradient}`} />
-              <CardContent className="p-5">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{card.title}</p>
-                    <p className="text-2xl font-bold mt-1 text-foreground truncate">{card.value}</p>
-                    {card.detail}
+            <Card
+              key={i}
+              className="overflow-hidden group hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border-0 shadow-sm cursor-default"
+            >
+              {/* Subtle gradient background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${card.gradientBg} opacity-50 group-hover:opacity-80 transition-opacity duration-300`} />
+              <div className="relative">
+                <div className={`h-1 bg-gradient-to-r ${card.gradient}`} />
+                <CardContent className="p-5">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{card.title}</p>
+                      <p className="text-2xl font-bold mt-1 text-foreground truncate">{card.value}</p>
+                      {card.detail}
+                    </div>
+                    <div className={`w-10 h-10 rounded-xl ${card.iconBg} flex items-center justify-center ml-3 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-5 h-5 text-white" />
+                    </div>
                   </div>
-                  <div className={`w-10 h-10 rounded-xl ${card.bgLight} flex items-center justify-center ml-3 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-5 h-5 text-${card.color}-600`} />
-                  </div>
-                </div>
-              </CardContent>
+                </CardContent>
+              </div>
             </Card>
           )
         })}
@@ -123,8 +130,8 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
       {/* Chart + Recent Trips */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Revenue Chart */}
-        <Card className="lg:col-span-2 border-0 shadow-sm">
-          <CardHeader className="pb-2">
+        <Card className="lg:col-span-2 border-0 shadow-md rounded-2xl overflow-hidden">
+          <CardHeader className="pb-2 bg-gradient-to-r from-emerald-50/80 to-transparent">
             <CardTitle className="text-base flex items-center gap-2">
               <TrendingUp className="w-4 h-4 text-emerald-600" />
               Ingresos por Día
@@ -158,8 +165,8 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
         </Card>
 
         {/* Recent Trips */}
-        <Card className="lg:col-span-3 border-0 shadow-sm">
-          <CardHeader className="pb-2">
+        <Card className="lg:col-span-3 border-0 shadow-md rounded-2xl overflow-hidden">
+          <CardHeader className="pb-2 bg-gradient-to-r from-emerald-50/80 to-transparent">
             <CardTitle className="text-base flex items-center gap-2">
               <Clock className="w-4 h-4 text-emerald-600" />
               Viajes Recientes
@@ -167,7 +174,7 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
             <CardDescription>Últimos 10 viajes registrados</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="overflow-x-auto max-h-[280px] overflow-y-auto">
+            <div className="overflow-x-auto max-h-[280px] overflow-y-auto custom-scrollbar">
               <Table>
                 <TableHeader>
                   <TableRow>

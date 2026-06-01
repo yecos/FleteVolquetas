@@ -54,7 +54,7 @@ export interface Stats {
 }
 
 export interface CalcResult {
-  tarifaM3Km: number
+  tarifaPorM3Km: number
   numViajes: number
   metrosCubicos: number
   distanciaKm: number

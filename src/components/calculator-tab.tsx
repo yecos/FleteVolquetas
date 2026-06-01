@@ -28,10 +28,12 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
   const [calcResult, setCalcResult] = useState<CalcResult | null>(null)
   const [calculating, setCalculating] = useState(false)
   const [savingViaje, setSavingViaje] = useState(false)
+  const [resultVisible, setResultVisible] = useState(false)
 
   const calcularFlete = async () => {
     setCalculating(true)
     setCalcResult(null)
+    setResultVisible(false)
     try {
       const res = await fetch('/api/calcular-flete', {
         method: 'POST',
@@ -49,6 +51,10 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
         return
       }
       setCalcResult(data)
+      // Trigger animation after state update
+      requestAnimationFrame(() => {
+        setResultVisible(true)
+      })
     } catch {
       toast.error('Error al calcular el flete')
     } finally {
@@ -80,6 +86,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
       if (!res.ok) throw new Error()
       toast.success('Viaje registrado correctamente')
       setCalcResult(null)
+      setResultVisible(false)
       setForm({ volquetaId: '', origen: '', destino: '', numViajes: '', distanciaKm: '', tipoVia: 'pavimentada', tipoCargue: 'material_piedra', metrosCubicos: '', toneladas: '', observaciones: '' })
       onStatsRefresh()
       onViajesRefresh()
@@ -100,7 +107,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
         <p className="text-sm text-muted-foreground">Ingresa los datos del viaje para calcular el costo del flete</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:items-start">
         {/* Form Card */}
         <Card className="border-0 shadow-sm">
           <CardHeader>
@@ -213,69 +220,73 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
           </CardContent>
         </Card>
 
-        {/* Result Card */}
-        <Card className={`border-0 shadow-sm transition-all duration-500 ${calcResult ? 'ring-2 ring-emerald-200 bg-emerald-50/30' : ''}`}>
-          <CardHeader>
-            <CardTitle className="text-base flex items-center gap-2">
-              <DollarSign className="w-5 h-5 text-emerald-600" />
-              Resultado del Flete
-            </CardTitle>
-            <CardDescription>
-              {calcResult ? `Vía: ${TIPO_VIA_LABELS[calcResult.tipoVia] || calcResult.tipoVia}` : 'Complete el formulario y calcule el flete'}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {!calcResult ? (
-              <div className="flex flex-col items-center justify-center py-16 text-muted-foreground">
-                <Calculator className="w-16 h-16 mb-4 opacity-20" />
-                <p className="text-sm">Los resultados aparecerán aquí</p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="space-y-1">
-                  {[
-                    { label: 'Tarifa ($/m³/km)', value: formatCurrency(calcResult.tarifaM3Km) },
-                    { label: '# Viajes', value: String(calcResult.numViajes) },
-                    { label: 'Metros cúbicos', value: `${calcResult.metrosCubicos} m³` },
-                    { label: 'Distancia', value: `${calcResult.distanciaKm} km` },
-                    { label: 'Fórmula', value: calcResult.formula, small: true },
-                  ].map((row, i) => (
-                    <div key={i} className="flex justify-between items-center py-2 border-b border-dashed last:border-0">
-                      <span className="text-sm text-muted-foreground">{row.label}</span>
-                      <span className={`font-medium ${row.small ? 'text-xs text-right max-w-[200px]' : ''}`}>{row.value}</span>
-                    </div>
-                  ))}
+        {/* Result Card - Sticky on desktop */}
+        <div className="lg:sticky lg:top-24">
+          <Card className={`border-0 shadow-sm transition-all duration-500 ${calcResult ? 'ring-2 ring-emerald-200 bg-emerald-50/30' : ''} ${resultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2">
+                <DollarSign className="w-5 h-5 text-emerald-600" />
+                Resultado del Flete
+              </CardTitle>
+              <CardDescription>
+                {calcResult ? `Vía: ${TIPO_VIA_LABELS[calcResult.tipoVia] || calcResult.tipoVia}` : 'Complete el formulario y calcule el flete'}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {!calcResult ? (
+                <div className="flex flex-col items-center justify-center py-16 text-muted-foreground">
+                  <Calculator className="w-16 h-16 mb-4 opacity-20" />
+                  <p className="text-sm">Los resultados aparecerán aquí</p>
                 </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    {[
+                      { label: 'Tarifa ($/m³/km)', value: formatCurrency(calcResult.tarifaPorM3Km) },
+                      { label: '# Viajes', value: String(calcResult.numViajes) },
+                      { label: 'Metros cúbicos', value: `${calcResult.metrosCubicos} m³` },
+                      { label: 'Distancia', value: `${calcResult.distanciaKm} km` },
+                      { label: 'Fórmula', value: calcResult.formula, small: true },
+                    ].map((row, i) => (
+                      <div key={i} className="flex justify-between items-center py-2 border-b border-dashed last:border-0">
+                        <span className="text-sm text-muted-foreground">{row.label}</span>
+                        <span className={`font-medium ${row.small ? 'text-xs text-right max-w-[200px]' : ''}`}>{row.value}</span>
+                      </div>
+                    ))}
+                  </div>
 
-                <div className="flex justify-between items-center py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl px-5 text-white shadow-lg">
-                  <span className="text-lg font-bold">Total Flete</span>
-                  <span className="text-2xl font-bold">{formatCurrency(calcResult.costoTotal)}</span>
+                  <div className="flex justify-between items-center py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl px-5 text-white shadow-lg relative overflow-hidden">
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
+                    <span className="text-lg font-bold relative z-10">Total Flete</span>
+                    <span className="text-2xl font-bold relative z-10 animate-fade-in">{formatCurrency(calcResult.costoTotal)}</span>
+                  </div>
+
+                  {form.volquetaId && form.origen && form.destino && (
+                    <Button
+                      onClick={registrarViaje}
+                      className="w-full h-12 text-base font-medium border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors"
+                      variant="outline"
+                      disabled={savingViaje}
+                    >
+                      {savingViaje ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mr-2" />
+                          Registrando...
+                        </>
+                      ) : (
+                        <>
+                          <CheckCircle2 className="w-5 h-5 mr-2" />
+                          Registrar Viaje
+                        </>
+                      )}
+                    </Button>
+                  )}
                 </div>
-
-                {form.volquetaId && form.origen && form.destino && (
-                  <Button
-                    onClick={registrarViaje}
-                    className="w-full h-12 text-base font-medium border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors"
-                    variant="outline"
-                    disabled={savingViaje}
-                  >
-                    {savingViaje ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin mr-2" />
-                        Registrando...
-                      </>
-                    ) : (
-                      <>
-                        <CheckCircle2 className="w-5 h-5 mr-2" />
-                        Registrar Viaje
-                      </>
-                    )}
-                  </Button>
-                )}
-              </div>
-            )}
-          </CardContent>
-        </Card>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   )

@@ -13,6 +13,14 @@ import {
   Truck, Calculator, History, Settings, LayoutDashboard,
 } from 'lucide-react'
 
+const NAV_ITEMS = [
+  { value: 'dashboard', label: 'Panel', icon: LayoutDashboard },
+  { value: 'volquetas', label: 'Volquetas', icon: Truck },
+  { value: 'calcular', label: 'Calcular', icon: Calculator },
+  { value: 'viajes', label: 'Viajes', icon: History },
+  { value: 'tarifas', label: 'Tarifas', icon: Settings },
+] as const
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState('dashboard')
 
@@ -52,10 +60,13 @@ export default function Home() {
     setLoadingStats(true)
     try {
       const res = await fetch('/api/stats')
+      if (!res.ok) throw new Error('Error en la respuesta')
       const data = await res.json()
+      if (data && typeof data === 'object' && !Array.isArray(data) && 'error' in data) throw new Error(data.error)
       setStats(data)
     } catch {
       toast.error('Error al cargar estadísticas')
+      setStats(null)
     } finally {
       setLoadingStats(false)
     }
@@ -65,10 +76,13 @@ export default function Home() {
     setLoadingVolquetas(true)
     try {
       const res = await fetch('/api/volquetas')
+      if (!res.ok) throw new Error('Error en la respuesta')
       const data = await res.json()
+      if (!Array.isArray(data)) throw new Error('Respuesta inválida')
       setVolquetas(data)
     } catch {
       toast.error('Error al cargar volquetas')
+      setVolquetas([])
     } finally {
       setLoadingVolquetas(false)
     }
@@ -78,10 +92,13 @@ export default function Home() {
     setLoadingTarifas(true)
     try {
       const res = await fetch('/api/tarifas')
+      if (!res.ok) throw new Error('Error en la respuesta')
       const data = await res.json()
+      if (!Array.isArray(data)) throw new Error('Respuesta inválida')
       setTarifas(data)
     } catch {
       toast.error('Error al cargar tarifas')
+      setTarifas([])
     } finally {
       setLoadingTarifas(false)
     }
@@ -124,46 +141,24 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 pb-24 sm:pb-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          {/* Professional Tab Navigation */}
-          <div className="mb-6">
+          {/* Desktop Tab Navigation - hidden on mobile */}
+          <div className="mb-6 hidden sm:block">
             <TabsList className="w-full grid grid-cols-5 h-auto gap-1 bg-white/80 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border">
-              <TabsTrigger
-                value="dashboard"
-                className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
-              >
-                <LayoutDashboard className="w-4 h-4 hidden sm:block" />
-                <span>Panel</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="volquetas"
-                className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
-              >
-                <Truck className="w-4 h-4 hidden sm:block" />
-                <span>Volquetas</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="calcular"
-                className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
-              >
-                <Calculator className="w-4 h-4 hidden sm:block" />
-                <span>Calcular</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="viajes"
-                className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
-              >
-                <History className="w-4 h-4 hidden sm:block" />
-                <span>Viajes</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="tarifas"
-                className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
-              >
-                <Settings className="w-4 h-4 hidden sm:block" />
-                <span>Tarifas</span>
-              </TabsTrigger>
+              {NAV_ITEMS.map((item) => {
+                const Icon = item.icon
+                return (
+                  <TabsTrigger
+                    key={item.value}
+                    value={item.value}
+                    className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{item.label}</span>
+                  </TabsTrigger>
+                )
+              })}
             </TabsList>
           </div>
 
@@ -204,6 +199,36 @@ export default function Home() {
           </TabsContent>
         </Tabs>
       </main>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] mobile-nav-safe" aria-label="Navegación principal">
+        <div className="grid grid-cols-5 h-16">
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon
+            const isActive = activeTab === item.value
+            return (
+              <button
+                key={item.value}
+                onClick={() => setActiveTab(item.value)}
+                className={`flex flex-col items-center justify-center gap-0.5 transition-colors duration-200 relative ${
+                  isActive
+                    ? 'text-emerald-600'
+                    : 'text-gray-400 active:text-gray-600'
+                }`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {isActive && (
+                  <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-emerald-500" />
+                )}
+                <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'scale-110' : ''}`} />
+                <span className={`text-[10px] font-medium leading-tight ${isActive ? 'font-semibold' : ''}`}>
+                  {item.label}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </nav>
 
       {/* Footer */}
       <footer className="border-t mt-auto bg-white/60">

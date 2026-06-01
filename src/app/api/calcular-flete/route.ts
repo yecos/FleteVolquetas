@@ -39,7 +39,7 @@ export async function POST(request: Request) {
       distanciaKm,
       tipoVia: tarifa.tipoVia,
       costoTotal: Math.round(costoTotal),
-      formula: `${Math.round(tarifaM3Km).toLocaleString('es-CO')} × ${numViajes} × ${metrosCubicos} m³ × ${distanciaKm} km`,
+      formula: `${new Intl.NumberFormat('es-CO').format(Math.round(tarifaM3Km))} × ${numViajes} × ${metrosCubicos} m³ × ${distanciaKm} km`,
     })
   } catch (error) {
     return NextResponse.json({ error: 'Error al calcular el flete' }, { status: 500 })
