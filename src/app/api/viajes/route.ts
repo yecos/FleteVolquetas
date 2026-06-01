@@ -1,8 +1,9 @@
-import { db } from '@/lib/db'
+import { db, initializeDatabase } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request) {
   try {
+    await initializeDatabase(db)
     const { searchParams } = new URL(request.url)
     const volquetaId = searchParams.get('volquetaId')
     const estado = searchParams.get('estado')

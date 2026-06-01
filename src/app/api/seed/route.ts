@@ -1,8 +1,11 @@
-import { db } from '@/lib/db'
+import { db, initializeDatabase } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function POST() {
   try {
+    // Ensure database is initialized (tables exist)
+    await initializeDatabase(db)
+
     const count = await db.volqueta.count()
 
     if (count > 0) {
@@ -43,6 +46,7 @@ export async function POST() {
 
     return NextResponse.json({ message: 'Datos iniciales creados correctamente', volquetas, viajes: 5 })
   } catch (error) {
+    console.error('Seed error:', error)
     return NextResponse.json({ error: 'Error al crear datos iniciales' }, { status: 500 })
   }
 }

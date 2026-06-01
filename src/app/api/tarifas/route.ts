@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+import { db, initializeDatabase } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 const defaultTarifas = [
@@ -9,6 +9,7 @@ const defaultTarifas = [
 
 export async function GET() {
   try {
+    await initializeDatabase(db)
     let tarifas = await db.tarifa.findMany({ orderBy: { createdAt: 'asc' } })
 
     if (tarifas.length === 0) {
