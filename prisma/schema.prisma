@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Volqueta {
+  id            String   @id @default(cuid())
+  placa         String   @unique
+  marca         String
+  modelo        String
+  capacidadM3   Float
+  capacidadTon  Float
+  conductor     String
+  estado        String   @default("disponible")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  viajes        Viaje[]
+}
+
+model Tarifa {
+  id          String  @id @default(cuid())
+  tipoVia     String  @unique
+  precioBase  Float
+  precioPorKm Float
+  precioPorM3 Float
+  activa      Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Viaje {
+  id           String   @id @default(cuid())
+  volquetaId   String
+  volqueta     Volqueta @relation(fields: [volquetaId], references: [id])
+  origen       String
+  destino      String
+  distanciaKm  Float
+  tipoVia      String
+  tipoCargue   String
+  metrosCubicos Float
+  toneladas    Float?
+  numViaje     Int?
+  cliente      String?
+  hrIni        String?
+  hrFinal      String?
+  klIni        Float?
+  klFinal      Float?
+  costoFlete   Float
+  observaciones String?
+  fecha        DateTime @default(now())
+  estado       String   @default("pendiente")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
