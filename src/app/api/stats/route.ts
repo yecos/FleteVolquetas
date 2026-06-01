@@ -1,11 +1,8 @@
-import { db, initializeDatabase } from '@/lib/db'
+import { db } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    // Ensure database is initialized
-    await initializeDatabase(db)
-
     const totalVolquetas = await db.volqueta.count()
     const volquetasDisponibles = await db.volqueta.count({ where: { estado: 'disponible' } })
     const volquetasEnViaje = await db.volqueta.count({ where: { estado: 'en viaje' } })

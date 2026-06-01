@@ -1,9 +1,8 @@
-import { db, initializeDatabase } from '@/lib/db'
+import { db } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    await initializeDatabase(db)
     const volquetas = await db.volqueta.findMany({
       orderBy: { createdAt: 'desc' },
       include: { _count: { select: { viajes: true } } },

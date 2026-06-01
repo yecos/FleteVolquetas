@@ -1,9 +1,8 @@
-import { db, initializeDatabase } from '@/lib/db'
+import { db } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   try {
-    await initializeDatabase(db)
     const body = await request.json()
     const { numViajes, metrosCubicos, distanciaKm, tipoVia } = body
 

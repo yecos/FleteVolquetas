@@ -1,11 +1,8 @@
-import { db, initializeDatabase } from '@/lib/db'
+import { db } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
 export async function POST() {
   try {
-    // Ensure database is initialized (tables exist)
-    await initializeDatabase(db)
-
     const count = await db.volqueta.count()
 
     if (count > 0) {
