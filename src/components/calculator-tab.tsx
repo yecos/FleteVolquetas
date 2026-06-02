@@ -1,17 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { Volqueta, CalcResult, TIPO_VIA_LABELS, TIPO_CARGUE_LABELS, formatCurrency } from '@/lib/types'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { Badge } from '@/components/ui/badge'
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from '@/components/ui/select'
-import { Calculator, DollarSign, MapPin, CheckCircle2, Truck } from 'lucide-react'
+import { Calculator, DollarSign, MapPin, CheckCircle2, Truck, Navigation, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { PlacesAutocomplete } from '@/components/places-autocomplete'
 
 interface CalculatorTabProps {
   volquetas: Volqueta[]
@@ -29,6 +31,41 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
   const [calculating, setCalculating] = useState(false)
   const [savingViaje, setSavingViaje] = useState(false)
   const [resultVisible, setResultVisible] = useState(false)
+  const [calculandoDistancia, setCalculandoDistancia] = useState(false)
+  const [distanciaProvider, setDistanciaProvider] = useState<string | null>(null)
+  const debounceDistRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Auto-calculate distance when both origin and destination are filled
+  useEffect(() => {
+    if (debounceDistRef.current) clearTimeout(debounceDistRef.current)
+    if (form.origen.trim().length >= 3 && form.destino.trim().length >= 3) {
+      debounceDistRef.current = setTimeout(async () => {
+        setCalculandoDistancia(true)
+        setDistanciaProvider(null)
+        try {
+          const res = await fetch('/api/distance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ origin: form.origen, destination: form.destino }),
+          })
+          const data = await res.json()
+          if (res.ok && data.distanceKm) {
+            setForm(prev => ({ ...prev, distanciaKm: String(data.distanceKm) }))
+            setDistanciaProvider(data.provider || null)
+            toast.success(`Distancia calculada: ${data.distanceKm} km`, {
+              description: data.provider === 'google_maps' ? 'Google Maps' :
+                data.provider === 'openstreetmap' ? 'OpenStreetMap' :
+                data.provider === 'linea_recta' ? 'Línea recta (aprox.)' : 'Auto'
+            })
+          }
+        } catch {
+          // Silently fail - user can still enter manually
+        } finally {
+          setCalculandoDistancia(false)
+        }
+      }, 800)
+    }
+  }, [form.origen, form.destino])
 
   const calcularFlete = async () => {
     setCalculating(true)
@@ -51,7 +88,6 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
         return
       }
       setCalcResult(data)
-      // Trigger animation after state update
       requestAnimationFrame(() => {
         setResultVisible(true)
       })
@@ -87,6 +123,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
       toast.success('Viaje registrado correctamente')
       setCalcResult(null)
       setResultVisible(false)
+      setDistanciaProvider(null)
       setForm({ volquetaId: '', origen: '', destino: '', numViajes: '', distanciaKm: '', tipoVia: 'pavimentada', tipoCargue: 'material_piedra', metrosCubicos: '', toneladas: '', observaciones: '' })
       onStatsRefresh()
       onViajesRefresh()
@@ -104,7 +141,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
           <Calculator className="w-5 h-5 text-emerald-600" />
           Calcular Flete
         </h2>
-        <p className="text-sm text-muted-foreground">Ingresa los datos del viaje para calcular el costo del flete</p>
+        <p className="text-sm text-muted-foreground">Ingresa origen y destino para calcular la distancia automáticamente</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:items-start">
@@ -132,32 +169,55 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
               </Select>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            {/* Origen y Destino con autocompletado */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Origen</Label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
-                  <Input placeholder="Ej: Cantera El Roble" value={form.origen} onChange={(e) => setForm({ ...form, origen: e.target.value })} className="pl-9 h-10" />
-                </div>
+                <PlacesAutocomplete
+                  value={form.origen}
+                  onChange={(val) => { setForm({ ...form, origen: val, distanciaKm: '' }); setDistanciaProvider(null) }}
+                  placeholder="Ej: Cantera El Roble"
+                  icon={<MapPin className="w-4 h-4 text-emerald-500" />}
+                />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Destino</Label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-red-500" />
-                  <Input placeholder="Ej: Obra Centro" value={form.destino} onChange={(e) => setForm({ ...form, destino: e.target.value })} className="pl-9 h-10" />
-                </div>
+                <PlacesAutocomplete
+                  value={form.destino}
+                  onChange={(val) => { setForm({ ...form, destino: val, distanciaKm: '' }); setDistanciaProvider(null) }}
+                  placeholder="Ej: Obra Centro"
+                  icon={<MapPin className="w-4 h-4 text-red-500" />}
+                />
               </div>
             </div>
 
-            {/* Single grid for # Viajes, Distancia, m³ - NO DUPLICATES */}
+            {/* Distancia con indicador de auto-cálculo */}
             <div className="grid grid-cols-3 gap-4">
               <div className="space-y-2">
-                <Label className="text-sm font-medium"># Viajes</Label>
+                <Label className="text-sm font-medium flex items-center gap-1.5">
+                  # Viajes
+                </Label>
                 <Input type="number" placeholder="3" value={form.numViajes} onChange={(e) => setForm({ ...form, numViajes: e.target.value })} className="h-10" />
               </div>
               <div className="space-y-2">
-                <Label className="text-sm font-medium">Distancia (km)</Label>
-                <Input type="number" placeholder="15" value={form.distanciaKm} onChange={(e) => setForm({ ...form, distanciaKm: e.target.value })} className="h-10" />
+                <Label className="text-sm font-medium flex items-center gap-1.5">
+                  Distancia (km)
+                  {calculandoDistancia && <Loader2 className="w-3 h-3 animate-spin text-emerald-500" />}
+                  {distanciaProvider && !calculandoDistancia && (
+                    <Badge variant="outline" className="text-[9px] px-1 py-0 h-4 border-emerald-200 text-emerald-600">
+                      {distanciaProvider === 'google_maps' ? 'GMaps' :
+                        distanciaProvider === 'openstreetmap' ? 'OSM' :
+                        distanciaProvider === 'linea_recta' ? 'Aprox' : 'Auto'}
+                    </Badge>
+                  )}
+                </Label>
+                <Input
+                  type="number"
+                  placeholder="Auto..."
+                  value={form.distanciaKm}
+                  onChange={(e) => { setForm({ ...form, distanciaKm: e.target.value }); setDistanciaProvider(null) }}
+                  className="h-10"
+                />
               </div>
               <div className="space-y-2">
                 <Label className="text-sm font-medium">Metros cúbicos (m³)</Label>
@@ -237,6 +297,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
                 <div className="flex flex-col items-center justify-center py-16 text-muted-foreground">
                   <Calculator className="w-16 h-16 mb-4 opacity-20" />
                   <p className="text-sm">Los resultados aparecerán aquí</p>
+                  <p className="text-xs mt-1 text-muted-foreground/60">La distancia se calcula automáticamente al ingresar origen y destino</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -256,8 +317,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
                   </div>
 
                   <div className="flex justify-between items-center py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl px-5 text-white shadow-lg relative overflow-hidden">
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer pointer-events-none" />
                     <span className="text-lg font-bold relative z-10">Total Flete</span>
                     <span className="text-2xl font-bold relative z-10 animate-fade-in">{formatCurrency(calcResult.costoTotal)}</span>
                   </div>

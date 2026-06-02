@@ -9,14 +9,16 @@ import { VolquetasTab } from '@/components/volquetas-tab'
 import { CalculatorTab } from '@/components/calculator-tab'
 import { ViajesTab } from '@/components/viajes-tab'
 import { TarifasTab } from '@/components/tarifas-tab'
+import { DistanciasTab } from '@/components/distancias-tab'
 import {
-  Truck, Calculator, History, Settings, LayoutDashboard,
+  Truck, Calculator, History, Settings, LayoutDashboard, Route,
 } from 'lucide-react'
 
 const NAV_ITEMS = [
   { value: 'dashboard', label: 'Panel', icon: LayoutDashboard },
   { value: 'volquetas', label: 'Volquetas', icon: Truck },
   { value: 'calcular', label: 'Calcular', icon: Calculator },
+  { value: 'distancias', label: 'Distancias', icon: Route },
   { value: 'viajes', label: 'Viajes', icon: History },
   { value: 'tarifas', label: 'Tarifas', icon: Settings },
 ] as const
@@ -145,16 +147,16 @@ export default function Home() {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           {/* Desktop Tab Navigation - hidden on mobile */}
           <div className="mb-6 hidden sm:block">
-            <TabsList className="w-full grid grid-cols-5 h-auto gap-1 bg-white/80 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border">
+            <TabsList className="w-full grid grid-cols-6 h-auto gap-1 bg-white/80 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border">
               {NAV_ITEMS.map((item) => {
                 const Icon = item.icon
                 return (
                   <TabsTrigger
                     key={item.value}
                     value={item.value}
-                    className="gap-2 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
+                    className="gap-1.5 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-3.5 h-3.5" />
                     <span>{item.label}</span>
                   </TabsTrigger>
                 )
@@ -183,6 +185,10 @@ export default function Home() {
             />
           </TabsContent>
 
+          <TabsContent value="distancias">
+            <DistanciasTab />
+          </TabsContent>
+
           <TabsContent value="viajes">
             <ViajesTab
               volquetas={volquetas}
@@ -202,7 +208,7 @@ export default function Home() {
 
       {/* Mobile Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] mobile-nav-safe" aria-label="Navegación principal">
-        <div className="grid grid-cols-5 h-16">
+        <div className="grid grid-cols-6 h-16">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.value
@@ -220,8 +226,8 @@ export default function Home() {
                 {isActive && (
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-emerald-500" />
                 )}
-                <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'scale-110' : ''}`} />
-                <span className={`text-[10px] font-medium leading-tight ${isActive ? 'font-semibold' : ''}`}>
+                <Icon className={`w-4 h-4 transition-transform duration-200 ${isActive ? 'scale-110' : ''}`} />
+                <span className={`text-[9px] font-medium leading-tight ${isActive ? 'font-semibold' : ''}`}>
                   {item.label}
                 </span>
               </button>

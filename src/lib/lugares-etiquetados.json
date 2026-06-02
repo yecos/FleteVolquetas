@@ -1,0 +1,1862 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          -75.61065099999999,
+          6.2360307
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Personal"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.6366319,
+          6.0556347
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Trabajo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.032607,
+          9.166483999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Galera sucre"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.94520399999999,
+          8.718707
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Sinugrava"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.81826339999999,
+          6.5150675
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Agregados El Tonusco"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.69021599999999,
+          8.880656
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. LAS MARGARITAS"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.59737,
+          7.640250999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANT GUAPA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.1516403,
+          4.755377999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "El Rosal-Bogotá, Cota, Cundinamarca, Colombia",
+        "name": "LOTE SIBERIA-COTA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.17954999999999,
+          8.918123999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "P. manzanares"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.48769999999999,
+          3.5642039999999997
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Obra EDS Argos Yumbo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.43111499999999,
+          9.478729
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Tolu viejo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.79989499999999,
+          10.861728999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS FOLCLORE DISTRACOM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -71.640135,
+          3.791175
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS OASIS DISTRACOM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.6189776,
+          4.2486694
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "1. CANTERA EXTRA BOQUERON"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.686702,
+          6.036473
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "BOTADERO EL SHAKIRO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.23789099999999,
+          8.863446999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. La Caña"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.45098399999999,
+          10.402664999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "BOTADERO LA MONA CTG"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.8379444,
+          8.7183333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F Jorge Londoño"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.8318984,
+          6.0096286
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Agris"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.72322199999999,
+          7.934272
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Banacol"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.6011523,
+          6.2325781
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Viejos"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.575237,
+          7.747261
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera La Esmeralda"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.9117364,
+          10.859859
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Galapa In Lilia"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.468732,
+          10.398966999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "BOT VILLA ROSITA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.399749,
+          6.043336
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Distracom El Jordan La Ceja"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.2590764,
+          8.6763202
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "El Viajano - San Marcos #27, San Marcos, Sucre, Colombia",
+        "name": "F. El Palmar"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.634131,
+          7.878011
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS EL AMPARO DISTRACOM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.4001,
+          9.110555
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "OBRA CHINU"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.788876,
+          8.600664
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Agregar SAS"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.15749,
+          8.738667999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. EL PALMAR"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.512042,
+          10.269929
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "BOTADERO BARU"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.496402,
+          6.391318699999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "LA CUMBRE taller Gastronimico"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.350256,
+          8.790087
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Corregimiento Pajarito"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.8798707,
+          8.7433984
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Distracom Eds Tacasuan"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.35041799999999,
+          9.293725
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "BOTADERO SINCELEJO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0.0,
+          0.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Yumbo, Valle del Cauca, Colombia",
+        "name": "Lote Argos"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.3955355,
+          6.1411485
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Excavar Botadero"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.656331,
+          8.869613
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Red Carnica"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.4095861,
+          9.2698675
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "DISTRACOM SABANAS, B/El Brujo, Cr. 4 #39 - 374, Sincelejo, Sucre, Colombia",
+        "name": "EDS SABANAS"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.1666599,
+          7.074874299999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Cl. 46 #22-2 a 22-192, Girón, Santander, Colombia",
+        "name": "Casa Bucaramanaga"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.388171,
+          9.302417
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS GINOPASCALI"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.0793546,
+          10.5649077
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Gravitrans SAS, Rotinet, Repelón, Atlántico, Colombia",
+        "name": "Cantera Canan"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.438729,
+          9.439174
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANTERA JOMEVE TOLUVIEJO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.37921399999999,
+          9.845376
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "GRANJA GAMBOTE"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.3830847,
+          6.0015198
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera la Ceja Union"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.249555,
+          8.688075999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANT. BUENAVISTA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -72.2964338,
+          5.4133992
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS ARAGUANEY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.8918281,
+          7.6183863
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Texaco Distracom Nuevo Horizonte, Escarralao, Zaragoza, Antioquia, Colombia",
+        "name": "Distracom Eds Nuevo Horizonte"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.4181083,
+          3.3924382
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Lago de pesca Villa Abuelos, LA GLORIA, Candelaria, Valle del Cauca, Colombia",
+        "name": "BOTADERO VILLA GORGONA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.552269,
+          7.9676469999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Coquera"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.39136479999999,
+          4.3908534
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "ACOPIO HOREB FUSAGASUGA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.2129459,
+          4.7997796
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Agregados La Punta"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.408367,
+          8.592350999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Maragon"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.39997699999999,
+          9.808199
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. BELEN ENTRADA 2"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.37801999999999,
+          9.844194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cant ESPAÑA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.628283,
+          4.2251175
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "2. AGREGADOS LA PEÑA DE HOREB"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.636731,
+          6.0534989999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "PUNTO KARDINAL - URAPANES"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.3979488,
+          6.5269691
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Lote Prima Gloria"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.53542279999999,
+          6.0240881
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Rascafria. Vereda El Carmen. El Retiro"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.388335,
+          9.842526999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Belen San Onofre"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -72.0291731,
+          4.3155358999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Eds Neblinas"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.56097489999999,
+          6.455989199999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Eds Quitasol Distracom"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.74328899999999,
+          5.8990868999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Lote Doradal Distracom"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.504188,
+          10.329938
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS CARIBE DISTRACOM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.59403739999999,
+          0.954781
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "David Y Doña Naidu"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.929519,
+          3.8723419999999997
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.8961629,
+          10.8636745
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Rancho Grande Cantera Sabalarga"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0.0,
+          0.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Cra. 13, Yumbo, Valle del Cauca, Colombia",
+        "name": "Distracom Texaco 30 Yumbo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.5353064,
+          6.0209646
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Punto De Agua Rascafria"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.87388299999999,
+          8.984959
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. La Gloria"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.20916299999999,
+          7.939579999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANT SANTA CLARA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.74035669999999,
+          10.963065799999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Eds Sitio Nuevo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.867693,
+          8.744233
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "DISTRACOM EDS EL NUESTRO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.66667799999999,
+          7.667996
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANTYERA AGREGADOS CHIGORODO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.9477478,
+          4.9490131
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Eds Tocancipa"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.486291,
+          3.614756
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Bermejal Yumbo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.42482199999999,
+          10.349257999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Simaco"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.49056499999999,
+          10.333331
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Distracom mayorista Zona franca"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.15278959999999,
+          6.5364815
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Villas Del Gitano, Unnamed Road, Santo Domingo, Antioquia, Colombia",
+        "name": "Lote Carlos Mejia Dmax"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.782603,
+          8.427692
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Distracom Eds Arrecife"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.40807699999999,
+          9.826419
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. belen BOSNIA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.788108,
+          8.380408
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Mundo Nuevo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.76784649999999,
+          8.6355626
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Finca Guyanas, Planeta Rica-Monteria, Montería, Córdoba, Colombia",
+        "name": "F. Guyanas"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.8884406,
+          11.0129097
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Puerto Colombia-Barranquilla, Puerto Colombia, Atlántico, Colombia",
+        "name": "Monarris"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.8979753,
+          4.2645504999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "TRITURADOS DEL TOLIMA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.738435,
+          8.473730999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. TEXAS"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.18366999999999,
+          8.89897
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Manzanares"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -72.1016796,
+          4.3141826
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Puerto Gaitan Pisible Lote Dcm"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.875543,
+          9.955352999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Terreno EDS Bosconia"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.84857,
+          8.805596
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "DISTRACOM MOCARI"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.657382,
+          8.870355
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Matadero Minerva"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -71.67147,
+          4.244606
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Los Menonitas"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.400553,
+          7.7553186
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "45, San Alberto, Cesar, Colombia",
+        "name": "Carne San Alberto"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.74085459999999,
+          10.9627754
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Eds Sitionuevo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0.0,
+          0.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Barbosa-Gómez Plata, Gómez Plata, Antioquia, Colombia",
+        "name": "Botadero Puente Gavino"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.83794499999999,
+          8.718342999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F Jorge Londoño"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.096038,
+          4.162643
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANTERA PUERTO CABRO PTO LOPEZ"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.945171,
+          8.71876
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "SinuGrava"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.032623,
+          9.165993
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Granja Palmapez"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.1590077,
+          7.1225995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "San Diego"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.467066,
+          10.519528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS DISTRACOM BARCELONETA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.183039,
+          8.899602999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "P. MANZANARES"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.634191,
+          7.8779639999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "DISTRACOM EL AMPARO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.188549,
+          10.372283
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. SILENCIO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.78855,
+          8.601327
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera la Siberia"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -72.92426999999999,
+          4.59042
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Estación de Servicio Brio Villanueva, El Desquite, Villanueva, Casanare, Colombia",
+        "name": "Eds Villanueva Distracom"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.503993,
+          10.266164999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "BOTADERO BIOGER"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.1264905,
+          4.4053802
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Arena Cantera"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.097061,
+          8.852129
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Agua Viva"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.11281,
+          6.563930999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Finca La Gata Capeto"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.2881191,
+          6.4784463
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Popalito"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -71.9011939,
+          5.8725276
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS LA PAZ  PAZ DE ARIPORO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.854799,
+          10.938676
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Distracom Eds San Nicolas"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.20956199999999,
+          8.653976
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Palestina"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.4572,
+          3.599169
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANT VELASQUEZ"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0.0,
+          0.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Villanueva-San Estanislao, Villanueva, San Estanislao, Bolívar, Colombia",
+        "name": "F. El Silencio"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.8607761,
+          5.221312999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "45A, Sutatausa, Cundinamarca, Colombia",
+        "name": "Cantera Los Pinos"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.7768363,
+          7.7857847
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Puerto Libertador, Córdoba, Colombia",
+        "name": "Distracom EDS La Rica"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -71.473627,
+          4.4254869999999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Colonia Menonita Australia"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.1870776,
+          6.5794571
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera El Vainillo Libardo Suárez"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.4277831,
+          9.4952658
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Agresucre, Tolú Viejo, Sucre, Colombia",
+        "name": "CANT AGRESUCRE"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          0.0,
+          0.0
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Vía a Las Pavitas, Caimito, Sucre, Colombia",
+        "name": "F. EL PALMAR"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.83155,
+          8.696163
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANT VILLA DEL CARMEN"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -73.2430972,
+          10.4587641
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Cra. 7a #25b-2 a 25b-166, Valledupar, Cesar, Colombia",
+        "name": "Eds Distracom Valledupar"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.39966629999999,
+          9.287713799999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Jomeve, Cl. 32, Sincelejo, Sucre, Colombia",
+        "name": "cantera Jomeve Sincelejo"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -74.90175599999999,
+          10.827547
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CANTERA LOS MANGUITOS"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.48950599999999,
+          10.342203
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "EDS AUTECO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.166741,
+          8.694217
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "CORMIN"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.171269,
+          9.4770796
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Los Palmitos, Sucre, Colombia",
+        "name": "CANTERA EL BONGO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.5778967,
+          7.747735
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera la Esmeralda"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -77.372047,
+          1.125244
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Sacyr"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.258662,
+          10.137069
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "GRANJA EL VISO"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.767788,
+          8.635602
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. Guyanas"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.249955,
+          8.688917
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. SANTA ELENA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -76.5208114,
+          3.5042921
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "address": "Cra. 35 #1-55, Acopi, Yumbo, Cali, Valle del Cauca, Colombia",
+        "name": "Obra EDS Tissot"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.158322,
+          8.681242
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. San Antonio"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.648618,
+          8.23542
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Cantera Solin Solis"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.24950799999999,
+          8.688326
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "F. VILLA ELENA"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.671947,
+          8.883436999999999
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Granja Romero"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.328212,
+          10.160031
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "GRANJA MANANTIALES"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          -75.5040607,
+          6.0376737
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Samuelito"
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

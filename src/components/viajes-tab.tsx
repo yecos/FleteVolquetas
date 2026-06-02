@@ -15,8 +15,9 @@ import {
 } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
 import { DeleteConfirmationDialog } from '@/components/delete-confirmation-dialog'
-import { History, Plus, Edit, Trash2, Filter, ChevronDown, ChevronUp } from 'lucide-react'
-import { useState, useEffect, useCallback } from 'react'
+import { PlacesAutocomplete } from '@/components/places-autocomplete'
+import { History, Plus, Edit, Trash2, Filter, ChevronDown, ChevronUp, MapPin, Loader2 } from 'lucide-react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { toast } from 'sonner'
 
 interface ViajesTabProps {
@@ -31,6 +32,8 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
   const [editing, setEditing] = useState<Viaje | null>(null)
   const [deleteDialog, setDeleteDialog] = useState<{ open: boolean; id: string; name: string }>({ open: false, id: '', name: '' })
   const [filtersExpanded, setFiltersExpanded] = useState(false)
+  const [calculandoDistancia, setCalculandoDistancia] = useState(false)
+  const debounceDistRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [filters, setFilters] = useState({
     volquetaId: '',
     estado: '',
@@ -43,6 +46,32 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
     toneladas: '', numViaje: '', cliente: '', hrIni: '', hrFinal: '',
     klIni: '', klFinal: '', costoFlete: '', observaciones: '', estado: 'pendiente',
   })
+
+  // Auto-calculate distance in dialog
+  useEffect(() => {
+    if (!dialogOpen) return
+    if (debounceDistRef.current) clearTimeout(debounceDistRef.current)
+    if (form.origen.trim().length >= 3 && form.destino.trim().length >= 3 && !form.distanciaKm) {
+      debounceDistRef.current = setTimeout(async () => {
+        setCalculandoDistancia(true)
+        try {
+          const res = await fetch('/api/distance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ origin: form.origen, destination: form.destino }),
+          })
+          const data = await res.json()
+          if (res.ok && data.distanceKm) {
+            setForm(prev => ({ ...prev, distanciaKm: String(data.distanceKm) }))
+          }
+        } catch {
+          // Silently fail
+        } finally {
+          setCalculandoDistancia(false)
+        }
+      }, 800)
+    }
+  }, [form.origen, form.destino, dialogOpen])
 
   // Fetch viajes with filters
   const fetchViajesFiltered = useCallback(async () => {
@@ -123,19 +152,6 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
       setDeleteDialog({ open: false, id: '', name: '' })
     }
   }
-
-  // Build query params for filters - use empty string instead of "all"
-  const buildFilterParams = () => {
-    const params = new URLSearchParams()
-    if (filters.volquetaId && filters.volquetaId !== 'all') params.set('volquetaId', filters.volquetaId)
-    if (filters.estado && filters.estado !== 'all') params.set('estado', filters.estado)
-    if (filters.fechaDesde) params.set('fechaDesde', filters.fechaDesde)
-    if (filters.fechaHasta) params.set('fechaHasta', filters.fechaHasta)
-    return params.toString()
-  }
-
-  // We need to actually fetch with the params - but the parent handles this
-  // So we'll pass the filter state up. Actually, let's just handle fetch here.
 
   return (
     <div className="space-y-4">
@@ -289,7 +305,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
           <DialogHeader>
             <DialogTitle>{editing ? 'Editar Viaje' : 'Nuevo Viaje'}</DialogTitle>
             <DialogDescription>
-              {editing ? 'Modifica los datos del viaje' : 'Registra un nuevo viaje'}
+              {editing ? 'Modifica los datos del viaje' : 'Registra un nuevo viaje - la distancia se calcula automáticamente'}
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
@@ -305,21 +321,35 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </Select>
             </div>
 
+            {/* Origen y Destino con autocompletado */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Origen</Label>
-                <Input placeholder="Origen" value={form.origen} onChange={(e) => setForm({ ...form, origen: e.target.value })} />
+                <PlacesAutocomplete
+                  value={form.origen}
+                  onChange={(val) => setForm({ ...form, origen: val, distanciaKm: '' })}
+                  placeholder="Origen"
+                  icon={<MapPin className="w-4 h-4 text-emerald-500" />}
+                />
               </div>
               <div className="space-y-2">
                 <Label>Destino</Label>
-                <Input placeholder="Destino" value={form.destino} onChange={(e) => setForm({ ...form, destino: e.target.value })} />
+                <PlacesAutocomplete
+                  value={form.destino}
+                  onChange={(val) => setForm({ ...form, destino: val, distanciaKm: '' })}
+                  placeholder="Destino"
+                  icon={<MapPin className="w-4 h-4 text-red-500" />}
+                />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Distancia (km)</Label>
-                <Input type="number" value={form.distanciaKm} onChange={(e) => setForm({ ...form, distanciaKm: e.target.value })} />
+                <Label className="flex items-center gap-1.5">
+                  Distancia (km)
+                  {calculandoDistancia && <Loader2 className="w-3 h-3 animate-spin text-emerald-500" />}
+                </Label>
+                <Input type="number" value={form.distanciaKm} onChange={(e) => setForm({ ...form, distanciaKm: e.target.value })} placeholder="Auto..." />
               </div>
               <div className="space-y-2">
                 <Label>Tipo de Vía</Label>

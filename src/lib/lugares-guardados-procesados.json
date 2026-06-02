@@ -1,0 +1,710 @@
+[
+  {
+    "name": "Productos Finca S.A.S.",
+    "address": "La Zorra, Ciénaga de Oro, Córdoba, Colombia",
+    "lat": 8.8911273,
+    "lng": -75.7407419
+  },
+  {
+    "name": "DISTRACOM YUMBO",
+    "address": "Cl. 15 #12 - 01, Br. Puerto Isaac, Yumbo, Valle del Cauca, Colombia",
+    "lat": 3.5736063,
+    "lng": -76.4855858
+  },
+  {
+    "name": "Restaurante San Miguel",
+    "address": "Bermejal, Cra. 4 #13-58, Arroyo Hondo, Yumbo, Valle del Cauca, Colombia",
+    "lat": 3.5853755,
+    "lng": -76.5006179
+  },
+  {
+    "name": "DISTRACOM TERMINAL CARTAGENA",
+    "address": "sector Doña Manuela Terminal de Transportes de Cartagena, Cr. de la Cordialidad, Cartagena de Indias, Bolívar, Colombia",
+    "lat": 10.3999417,
+    "lng": -75.4568071
+  },
+  {
+    "name": "DISTRACOM SABANAS",
+    "address": "B/El Brujo, Cr. 4 #39 - 374, Sincelejo, Sucre, Colombia",
+    "lat": 9.2698675,
+    "lng": -75.4095861
+  },
+  {
+    "name": "Villas Del Gitano",
+    "address": "Unnamed Road, Santo Domingo, Antioquia, Colombia",
+    "lat": 6.5364815,
+    "lng": -75.1527896
+  },
+  {
+    "name": "Planta de Relaves Antioquia Gold",
+    "address": "Yolombó, Antioquia, Colombia",
+    "lat": 6.5692427,
+    "lng": -75.2012074
+  },
+  {
+    "name": "Restaurante Praia",
+    "address": "Guatape, Guatapé, Antioquia, Colombia",
+    "lat": 6.2414723,
+    "lng": -75.1885753
+  },
+  {
+    "name": "Consultorio Audiológico O&2",
+    "address": "Cl. 5 #10 a 15 Consultorio 104 (Primer Piso, Zipaquirá, Cundinamarca, Colombia",
+    "lat": 5.0226916,
+    "lng": -74.0019278
+  },
+  {
+    "name": "Merlot Parrilla Bar",
+    "address": "Transversal 49c #59-146 a, Medellín, Antioquia, Colombia",
+    "lat": 6.2522358,
+    "lng": -75.5755711
+  },
+  {
+    "name": "Toyota Yokomotor Palacé",
+    "address": "Cra. 50 #32 - 182, La Candelaria, Medellín, La Candelaria, Medellín, Antioquia, Colombia",
+    "lat": 6.2350182,
+    "lng": -75.5735202
+  },
+  {
+    "name": "Cochibacon",
+    "address": "Cl. 39 #35-61, El Salvador, Medellín, Buenos Aires, Medellín, Antioquia, Colombia",
+    "lat": 6.2361636,
+    "lng": -75.5613337
+  },
+  {
+    "name": "Niko Parrilla | Las Vegas | Bomba de Terpel | Asados y parrilla",
+    "address": "Cl. 57 Sur #48199 48- a, Sabaneta, Antioquia, Colombia",
+    "lat": 6.1586486,
+    "lng": -75.6090243
+  },
+  {
+    "name": "Hotel Puerto Madero Boutique Chia",
+    "address": "Cl. 2 #6 - 22 Interior 1, Chía, Cundinamarca, Colombia",
+    "lat": 4.8522408,
+    "lng": -74.0599133
+  },
+  {
+    "name": "Restaurante Las Cardonas",
+    "address": "La Pradera-Frayles, Dosquebradas, Risaralda, Colombia",
+    "lat": 4.8173446,
+    "lng": -75.6639709
+  },
+  {
+    "name": "Distribuidora Berco PMC",
+    "address": "Cra. 55 #27a08, Guayabal, Medellín, Guayabal, Medellín, Antioquia, Colombia",
+    "lat": 6.2276469,
+    "lng": -75.5801707
+  },
+  {
+    "name": "Hacienda Virgen del Cobre",
+    "address": "Necoclí, Antioquia, Colombia",
+    "lat": 8.4202299,
+    "lng": -76.7678439
+  },
+  {
+    "name": "Cantera y Materiales la Esmeralda",
+    "address": "Vda. La Esmeralda, Chigorodo, Chigorodó, Antioquia, Colombia",
+    "lat": 7.6655509,
+    "lng": -76.6788091
+  },
+  {
+    "name": "Restaurante Bianchas",
+    "address": "Dg. 57 #33 – 82, Hermosa Provincia, Bello, Antioquia, Colombia",
+    "lat": 6.3421705,
+    "lng": -75.5422287
+  },
+  {
+    "name": "Gravitrans SAS",
+    "address": "Rotinet, Repelón, Atlántico, Colombia",
+    "lat": 10.5649077,
+    "lng": -75.0793546
+  },
+  {
+    "name": "Edificio C34",
+    "address": "Cl. 15 #35-1, El Poblado, Medellín, El Poblado, Medellín, Antioquia, Colombia",
+    "lat": 6.2148927,
+    "lng": -75.5636001
+  },
+  {
+    "name": "Granja Avicola Romero - Malula",
+    "address": "Unnamed Road, Ciénaga de Oro, Córdoba, Colombia",
+    "lat": 8.8798607,
+    "lng": -75.6735271
+  },
+  {
+    "name": "DISTRACOM LA LEYENDA",
+    "address": "Av. Salguero #25A - 65, Valledupar, Cesar, Colombia",
+    "lat": 10.4593409,
+    "lng": -73.2428866
+  },
+  {
+    "name": "Hacienda Belén",
+    "address": "San Onofre, Sucre, Colombia",
+    "lat": 9.8423039,
+    "lng": -75.3883489
+  },
+  {
+    "name": "Los cayitos",
+    "address": "RJV6+3H, San Onofre, Sucre, Colombia",
+    "lat": 9.84266,
+    "lng": -75.388525
+  },
+  {
+    "name": "Finca Villa Oshun",
+    "address": "Medellín, Santa Elena, Medellín, Antioquia, Colombia",
+    "lat": 6.2526513,
+    "lng": -75.5311152
+  },
+  {
+    "name": "Jomeve",
+    "address": "Cl. 32, Sincelejo, Sucre, Colombia",
+    "lat": 9.2877138,
+    "lng": -75.3996663
+  },
+  {
+    "name": "Lago de pesca Villa Abuelos",
+    "address": "LA GLORIA, Candelaria, Valle del Cauca, Colombia",
+    "lat": 3.3924382,
+    "lng": -76.4181083
+  },
+  {
+    "name": "Agresucre",
+    "address": "Tolú Viejo, Sucre, Colombia",
+    "lat": 9.4952658,
+    "lng": -75.4277831
+  },
+  {
+    "name": "Trituradora R&R Frontera",
+    "address": "Chinácota, Norte de Santander, Colombia",
+    "lat": 7.6083301,
+    "lng": -72.6295957
+  },
+  {
+    "name": "Estadero Las Distancias Del Sabor",
+    "address": "Kilometro 3 la Pintada, Caldas, Colombia",
+    "lat": 6.0548351,
+    "lng": -75.6294174
+  },
+  {
+    "name": "Pizza ¡Qué delicia!",
+    "address": "Cra. 86 #65, La América, Medellín, La América, Medellín, Antioquia, Colombia",
+    "lat": 6.2548859,
+    "lng": -75.6034517
+  },
+  {
+    "name": "Lavadero de carros",
+    "address": "Cra. 86 #45b- 7, La América, Medellín, La América, Medellín, Antioquia, Colombia",
+    "lat": 6.2549232,
+    "lng": -75.6033268
+  },
+  {
+    "name": "Cosechas Pasto",
+    "address": "Cl. 11 #no 34 78, Pasto, Nariño, Colombia",
+    "lat": 1.2163728,
+    "lng": -77.287796
+  },
+  {
+    "name": "Propartes 7 de agosto",
+    "address": "Cl. 64 #27A - 13, Barrios Unidos, Bogotá, Cundinamarca, Colombia",
+    "lat": 4.6571104,
+    "lng": -74.0741533
+  },
+  {
+    "name": "Planta",
+    "address": "Guasca, El Santuario, Guasca, Cundinamarca, Colombia",
+    "lat": 4.8894258,
+    "lng": -73.887142
+  },
+  {
+    "name": "Cotranscavar S.A.S",
+    "address": "Chía, Cundinamarca, Colombia",
+    "lat": 4.9032083,
+    "lng": -74.0012617
+  },
+  {
+    "name": "Cantera de la Naveta",
+    "address": "45A, La Naveta, Cajicá, Cundinamarca, Colombia",
+    "lat": 4.9524843,
+    "lng": -74.0164496
+  },
+  {
+    "name": "La frontera",
+    "address": "La Unión-Mesopotamia, La Unión, Antioquia, Colombia",
+    "lat": 5.8891805,
+    "lng": -75.3128692
+  },
+  {
+    "name": "Proyecto Eds Distracom",
+    "address": "Guadalajara de Buga, Valle del Cauca, Colombia",
+    "lat": 3.9142396,
+    "lng": -76.3025661
+  },
+  {
+    "name": "Five Star Records",
+    "address": "Av. 37 #78 77, Laureles - Estadio, Medellín, Laureles, Medellín, Antioquia, Colombia",
+    "lat": 6.243411,
+    "lng": -75.5990838
+  },
+  {
+    "name": "DISTRACOM AUTOPISTA",
+    "address": "Autopista Medellín-Bogotá #Km 20, Guarne, Antioquia, Colombia",
+    "lat": 6.2925913,
+    "lng": -75.4510473
+  },
+  {
+    "name": "Estación de Autobuses",
+    "address": "03003 Alicante, España",
+    "lat": 38.3376934,
+    "lng": -0.4917455
+  },
+  {
+    "name": "Estación de Madrid Puerta de Atocha - Almudena Grandes",
+    "address": "Pl. del Emperador Carlos V, Arganzuela, 28045 Madrid, España",
+    "lat": 40.4064905,
+    "lng": -3.6909091
+  },
+  {
+    "name": "This is Holland",
+    "address": "Overhoeksplein 51, 1031 KS Amsterdam, Países Bajos",
+    "lat": 52.3841865,
+    "lng": 4.9021959
+  },
+  {
+    "name": "Marc Zorgt",
+    "address": "Treurenburgstraat 305, 5613 EA Eindhoven, Países Bajos",
+    "lat": 51.4372256,
+    "lng": 5.4905262
+  },
+  {
+    "name": "Personeelsvereniging DAF Westerlo",
+    "address": "Van Doornelaan 1, 2260 Westerlo, Bélgica",
+    "lat": 51.1265657,
+    "lng": 4.9357147
+  },
+  {
+    "name": "Torenhof bakkerij - ijskafee",
+    "address": "Geneinde 1B, 2260 Westerlo, Bélgica",
+    "lat": 51.1024551,
+    "lng": 4.906692
+  },
+  {
+    "name": "Brussels Marriott Hotel Grand Place",
+    "address": "Rue Auguste Orts 3-7, 1000 Bruxelles, Bélgica",
+    "lat": 50.8487418,
+    "lng": 4.3489816
+  },
+  {
+    "name": "Hermès",
+    "address": "95700 Roissy-en-France, Francia",
+    "lat": 49.004764,
+    "lng": 2.5909118
+  },
+  {
+    "name": "Reserva Restaurante y Cocteles",
+    "address": "Via del Pellegrino, 160/164, 00186 Roma RM, Italia",
+    "lat": 41.8971092,
+    "lng": 12.4700443
+  },
+  {
+    "name": "Ex Cantiere Fratelli Cadenaccio - Ansaldo",
+    "address": "Via Giacomo Puccini, 19, 16154 Genova GE, Italia",
+    "lat": 44.4234147,
+    "lng": 8.8439707
+  },
+  {
+    "name": "Petite Afrique",
+    "address": "06310 Beaulieu-sur-Mer, Francia",
+    "lat": 43.71321,
+    "lng": 7.33862
+  },
+  {
+    "name": "Face & Body Care LPG",
+    "address": "1 Prom. de la Plage, 06800 Cagnes-sur-Mer, Francia",
+    "lat": 43.6512476,
+    "lng": 7.1525567
+  },
+  {
+    "name": "Casino JOA de Cannes Mandelieu",
+    "address": "605 Av. du Général de Gaulle, 06210 Mandelieu-la-Napoule, Francia",
+    "lat": 43.5298795,
+    "lng": 6.9478235
+  },
+  {
+    "name": "Sunset Café",
+    "address": "Prom. Simon Lorière, 83120 Sainte-Maxime, Francia",
+    "lat": 43.3077666,
+    "lng": 6.6391499
+  },
+  {
+    "name": "Hôtel Bloom - Van der Valk Saint-Aygulf",
+    "address": "276 Bd Salvarelli, 83370 Fréjus, Francia",
+    "lat": 43.3916791,
+    "lng": 6.7261138
+  },
+  {
+    "name": "Basílica de San Pío X",
+    "address": "97 Bd Rémi Sempé, 65100 Lourdes, Francia",
+    "lat": 43.0973661,
+    "lng": -0.054535
+  },
+  {
+    "name": "Iglesia de Santa Bernardita",
+    "address": "1 Av. Mgr Théas, 65100 Lourdes, Francia",
+    "lat": 43.0989021,
+    "lng": -0.0580313
+  },
+  {
+    "name": "Margarita Carrasco Quintanilla",
+    "address": "Campo de Volantín Pasealekua, 10, 48007 Bilbao, Bizkaia, España",
+    "lat": 43.2651075,
+    "lng": -2.9248441
+  },
+  {
+    "name": "Acantilados del Infierno",
+    "address": "33568 Ribadesella, Asturias, España",
+    "lat": 43.4608471,
+    "lng": -5.0286269
+  },
+  {
+    "name": "Estatua del Papa San Pablo VI",
+    "address": "Cova da Iria, 2496-908 Fátima, Portugal",
+    "lat": 39.6303068,
+    "lng": -8.6753445
+  },
+  {
+    "name": "Plaza del Comercio",
+    "address": "1100-148 Lisbon, Portugal",
+    "lat": 38.7072828,
+    "lng": -9.1363613
+  },
+  {
+    "name": "Hostal Restaurante Fogón de Gredos",
+    "address": "C/ Linarejos, 1, 05417 Guisando, Ávila, España",
+    "lat": 40.2228548,
+    "lng": -5.1525739
+  },
+  {
+    "name": "altitud ibague",
+    "address": "Mz A casa 13, Cordoba, Ibagué, Tolima, Colombia",
+    "lat": 4.446676,
+    "lng": -75.2125609
+  },
+  {
+    "name": "Antiguo colegio de La Sagrada Familia",
+    "address": "Cl. 3 Oe. #5 48, COMUNA 3, Cali, Valle del Cauca, Colombia",
+    "lat": 3.4498124,
+    "lng": -76.5432876
+  },
+  {
+    "name": "Tienda Mixta Batea Seca",
+    "address": "60 #Km 18, Autopista Medellín-Bogotá, Guarne, Antioquia, Colombia",
+    "lat": 6.3057652,
+    "lng": -75.4594718
+  },
+  {
+    "name": "Hampton Inn Chicago McCormick Place",
+    "address": "123 E Cermak Rd Suite 100, Chicago, IL 60616, Estados Unidos",
+    "lat": 41.8527293,
+    "lng": -87.6232257
+  },
+  {
+    "name": "Iglesia de Nuestra Señora de los Dolores",
+    "address": "Cra. 13 #7-98, Entrerríos, Antioquia, Colombia",
+    "lat": 6.566994,
+    "lng": -75.5169721
+  },
+  {
+    "name": "Parque Central San Pedro de los Milagros",
+    "address": "San Pedro - Entrerrios - Don Matías #505, San Pedro, San Pedro de los Milagros, Antioquia, Colombia",
+    "lat": 6.461751,
+    "lng": -75.5558632
+  },
+  {
+    "name": "DISTRACOM LA PERLA",
+    "address": "Cr. 50. 40 - 240 km 1 via, San Pedro, San Pedro de los Milagros, Antioquia, Colombia",
+    "lat": 6.4516314,
+    "lng": -75.5621116
+  },
+  {
+    "name": "Agregados Nacionales",
+    "address": "Correncoro, Guamo, Tolima, Colombia",
+    "lat": 3.9853224,
+    "lng": -74.9886322
+  },
+  {
+    "name": "DISTRACOM JAVERIANA",
+    "address": "Ak 7 #46 - 05, Chapinero, Bogotá, Cundinamarca, Colombia",
+    "lat": 4.6330064,
+    "lng": -74.0640656
+  },
+  {
+    "name": "Hotel Termales Del Ruiz",
+    "address": "Paraje De Termales, Villamaria, Caldas, Colombia",
+    "lat": 4.970432,
+    "lng": -75.37819
+  },
+  {
+    "name": "Restaurante Tezenda",
+    "address": "Mall Tezenda, La Ceja-Río Negro #km 7, El Carmen de Viboral, Antioquia, Colombia",
+    "lat": 6.0651304,
+    "lng": -75.3827464
+  },
+  {
+    "name": "DISTRACOM SERVIPOPULAR",
+    "address": "Cl. 25 #No. 12A - 21, Villavicencio, Meta, Colombia",
+    "lat": 4.1399907,
+    "lng": -73.6134644
+  },
+  {
+    "name": "DISTRACOM LA COROCORA",
+    "address": "Avenida 23 #No. 27B - 30, Acacías, Meta, Colombia",
+    "lat": 3.997611,
+    "lng": -73.7670591
+  },
+  {
+    "name": "Esso",
+    "address": "Tv. 29 #41 - 39, Villavicencio, Meta, Colombia",
+    "lat": 4.1559371,
+    "lng": -73.6370441
+  },
+  {
+    "name": "DISTRACOM AVENIDA CATAMA",
+    "address": "B/ Parques de Sevilla, Cra. 9a #35 Esquina, Villavicencio, Meta, Colombia",
+    "lat": 4.1467641,
+    "lng": -73.6088994
+  },
+  {
+    "name": "The Burger & Frozzen Pits",
+    "address": "eds terpel divino niño, Colombia",
+    "lat": 4.1146781,
+    "lng": -73.6084558
+  },
+  {
+    "name": "DISTRACOM LOS CAZADORES",
+    "address": "Av. 14 #14 - 83, Puerto López, Meta, Colombia",
+    "lat": 4.0847019,
+    "lng": -72.9631115
+  },
+  {
+    "name": "Aqui es Pues",
+    "address": "40, El Pinal, Puerto López, Meta, Colombia",
+    "lat": 4.1568141,
+    "lng": -72.6911926
+  },
+  {
+    "name": "Ocelote",
+    "address": "Puerto Gaitán, Meta, Colombia",
+    "lat": 4.157801,
+    "lng": -72.035676
+  },
+  {
+    "name": "Pane e Pomodoro Laureles",
+    "address": "Cra. 73 #5-6, Laureles - Estadio, Medellín, Laureles, Medellín, Antioquia, Colombia",
+    "lat": 6.246561,
+    "lng": -75.5922687
+  },
+  {
+    "name": "DISTRACOM MANACACÍAS",
+    "address": "Cra. 10 #No. 35 - 36, Puerto Gaitán, Meta, Colombia",
+    "lat": 4.3151668,
+    "lng": -72.0945997
+  },
+  {
+    "name": "Estación de Servicio Texaco - El Morichal",
+    "address": "Cra. 5 #26 - 58, Yopal, Casanare, Colombia",
+    "lat": 5.3278873,
+    "lng": -72.4080974
+  },
+  {
+    "name": "DISTRACOM MILENIUM",
+    "address": "Cl. 24 #13 - 02, Yopal, Casanare, Colombia",
+    "lat": 5.333352,
+    "lng": -72.4002789
+  },
+  {
+    "name": "DISTRACOM LA MÁPORA",
+    "address": "Cra. 19 #14 - 52, Yopal, Casanare, Colombia",
+    "lat": 5.3425713,
+    "lng": -72.3988953
+  },
+  {
+    "name": "DISTRACOM PIE DE MONTE",
+    "address": "Cr. 20 No. 7 - 41 B/La Esperanza, Pore, Casanare, Colombia",
+    "lat": 5.7322158,
+    "lng": -71.9963943
+  },
+  {
+    "name": "HOTEL PUERTA PARAISO SAS",
+    "address": "km. 2 Vía, Paz de Ariporo, Yopal, Casanare, Colombia",
+    "lat": 5.8552732,
+    "lng": -71.9139404
+  },
+  {
+    "name": "La Cascada Reposteria",
+    "address": "Cl. 11 #24 68, Yopal, Casanare, Colombia",
+    "lat": 5.3484938,
+    "lng": -72.3949765
+  },
+  {
+    "name": "DISTRACOM LOS CANAGUAROS",
+    "address": "vía Marginal de la Selva Frente a la Av. Luis María Jiménez, Km. 1, Aguazul, Casanare, Colombia",
+    "lat": 5.1810445,
+    "lng": -72.5537911
+  },
+  {
+    "name": "DISTRACOM MONSERRATE",
+    "address": "Aguazul - Monterrey, Monterrey, Casanare, Colombia",
+    "lat": 4.8800321,
+    "lng": -72.8880356
+  },
+  {
+    "name": "Hotel Los Lagos Centro Vacacional; Hotel en Monterrey Casanare,",
+    "address": "Kilometro 1 #16 - 25, Monterrey, Casanare, Colombia",
+    "lat": 4.8689408,
+    "lng": -72.8890309
+  },
+  {
+    "name": "Centro Comercial Unicentro Villavicencio",
+    "address": "Barrio Nuevo, Av 40, Puente El Maizaro #26C - 10, Villavicencio, Meta, Colombia",
+    "lat": 4.1415182,
+    "lng": -73.634493
+  },
+  {
+    "name": "Hoteles Dann Carlton Cali",
+    "address": "Cra. 2 #1-60, COMUNA 3, Cali, Valle del Cauca, Colombia",
+    "lat": 3.4500389,
+    "lng": -76.5405278
+  },
+  {
+    "name": "SERVICENTRO VOLKSWAGEN",
+    "address": "Cl. 41 #52-31, La Candelaria, Medellín, La Candelaria, Medellín, Antioquia, Colombia",
+    "lat": 6.2421525,
+    "lng": -75.5728608
+  },
+  {
+    "name": "POPEYE RESTAURANTE",
+    "address": "Km 55 vía Barranquilla - Ciénaga, Puebloviejo, Magdalena, Colombia",
+    "lat": 10.9859629,
+    "lng": -74.3011544
+  },
+  {
+    "name": "Cantera sello rojo",
+    "address": "Unnamed Rd,, Puerto Colombia, Atlántico, Colombia",
+    "lat": 11.0112018,
+    "lng": -74.9231496
+  },
+  {
+    "name": "Malecón Playa",
+    "address": "# a 3-128,, Cl. 1 #32, Riohacha, La Guajira, Colombia",
+    "lat": 11.5534968,
+    "lng": -72.9067393
+  },
+  {
+    "name": "Asociacion Wayuu 7 Mares",
+    "address": "Al lado del centro de salud, Cabo de La Vela, La Guajira, Colombia",
+    "lat": 12.1916472,
+    "lng": -72.1461604
+  },
+  {
+    "name": "El faro, cabo de la vela",
+    "address": "Cl. 68 Bis #9844, Bogotá, Uribia, La Guajira, Colombia",
+    "lat": 12.2096649,
+    "lng": -72.1791743
+  },
+  {
+    "name": "Tarima Tierra de Cantores",
+    "address": "Fonseca, La Guajira, Colombia",
+    "lat": 10.8912461,
+    "lng": -72.8518343
+  },
+  {
+    "name": "Casa Hotel Linda V",
+    "address": "Cl. 40 #519, Montería, Córdoba, Colombia",
+    "lat": 8.7622925,
+    "lng": -75.8785031
+  },
+  {
+    "name": "Casa China",
+    "address": "Cl 56 #32-75, Sotomayor, Bucaramanga, Santander, Colombia",
+    "lat": 7.1097094,
+    "lng": -73.1103469
+  },
+  {
+    "name": "Parque Nacional del Chicamocha",
+    "address": "Aratoca, Km. 54 Via Bucaramanga - San Gil, Bucaramanga, Santander, Colombia",
+    "lat": 6.7901528,
+    "lng": -73.0034994
+  },
+  {
+    "name": "Hotel Swite Real",
+    "address": "Cl. 55 #17a - 17, Bucaramanga, Santander, Colombia",
+    "lat": 7.108505,
+    "lng": -73.1195513
+  },
+  {
+    "name": "Salto del Tequendama",
+    "address": "Soacha, Cundinamarca, Colombia",
+    "lat": 4.5748595,
+    "lng": -74.2933816
+  },
+  {
+    "name": "Plaza Alfonso López de Valledupar",
+    "address": "Cra. 7 #1229, Valledupar, Cesar, Colombia",
+    "lat": 10.4775918,
+    "lng": -73.2445363
+  },
+  {
+    "name": "DISTRACOM OFICINA PRINCIPAL",
+    "address": "DISTRACOM OFICINA PRINCIPAL, Cereté, Córdoba, Colombia",
+    "lat": 8.8751802,
+    "lng": -75.8009762
+  },
+  {
+    "name": "Hotel Bosconia Imperial",
+    "address": "Cra 18 #21-36, Bosconia, Cesar, Colombia",
+    "lat": 9.9761274,
+    "lng": -73.8880814
+  },
+  {
+    "name": "Kadermo Stocks",
+    "address": "calle Tetuan, carretera N340, 03311 La Aparecida, Alicante, España",
+    "lat": 38.0775065,
+    "lng": -1.0102474
+  },
+  {
+    "name": "ApartHotel TH La Florida",
+    "address": "C. de Proción, 12, Moncloa - Aravaca, 28023 Madrid, España",
+    "lat": 40.4678608,
+    "lng": -3.8007075
+  },
+  {
+    "name": "La Taberna del Gourmet",
+    "address": "C. San Fernando, 10, 03002 Alicante, España",
+    "lat": 38.3444729,
+    "lng": -0.4816046
+  },
+  {
+    "name": "Restaurante Venta El Peretón",
+    "address": "Av. de Lorca, 134, 30835 Sangonera la Seca, Murcia, España",
+    "lat": 37.9559977,
+    "lng": -1.2380492
+  },
+  {
+    "name": "de Bassus",
+    "address": "C.C. Costa, C. Malaquita, 1, 03189 La Zenia, Alicante, España",
+    "lat": 37.9254477,
+    "lng": -0.7354838
+  },
+  {
+    "name": "Restaurante Venta Quemada",
+    "address": "A-92N, 18850 Cúllar, Granada, España",
+    "lat": 37.5916213,
+    "lng": -2.4654049
+  },
+  {
+    "name": "Restaurante Casa Araez",
+    "address": "C. Salvador Segui, 66, 03190 Pilar de la Horadada, Alicante, España",
+    "lat": 37.8578598,
+    "lng": -0.7894458
+  }
+]
