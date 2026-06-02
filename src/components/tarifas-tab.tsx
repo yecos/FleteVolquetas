@@ -89,7 +89,7 @@ export function TarifasTab({ tarifas, loading, onRefresh }: TarifasTabProps) {
           </h2>
           <p className="text-sm text-muted-foreground">Gestiona las tarifas de flete por tipo de vía</p>
         </div>
-        <Button onClick={() => openDialog()} className="bg-emerald-600 hover:bg-emerald-700">
+        <Button onClick={() => openDialog()} className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-transform">
           <Plus className="w-4 h-4 mr-2" />
           Nueva Tarifa
         </Button>
@@ -115,14 +115,14 @@ export function TarifasTab({ tarifas, loading, onRefresh }: TarifasTabProps) {
             <CardContent className="py-16 text-center">
               <Settings className="w-12 h-12 mx-auto text-muted-foreground/30 mb-3" />
               <p className="text-muted-foreground">No hay tarifas configuradas</p>
-              <Button onClick={() => openDialog()} variant="outline" className="mt-3 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+              <Button onClick={() => openDialog()} variant="outline" className="mt-3 border-emerald-200 text-emerald-700 hover:bg-emerald-50 active:scale-95 transition-transform">
                 <Plus className="w-4 h-4 mr-2" /> Crear Tarifa
               </Button>
             </CardContent>
           </Card>
         ) : (
           tarifas.map((t) => (
-            <Card key={t.id} className="group hover:shadow-md transition-all duration-300 border-0 shadow-sm overflow-hidden">
+            <Card key={t.id} className="group hover:shadow-md transition-all duration-300 border-0 shadow-sm overflow-hidden active:scale-[0.98]">
               <div className={`h-1.5 ${t.activa ? 'bg-gradient-to-r from-emerald-400 to-emerald-600' : 'bg-gradient-to-r from-gray-300 to-gray-400'}`} />
               <CardContent className="p-5">
                 <div className="flex items-start justify-between mb-4">
@@ -165,11 +165,11 @@ export function TarifasTab({ tarifas, loading, onRefresh }: TarifasTabProps) {
                 </div>
 
                 <div className="flex items-center justify-end gap-1 pt-2 border-t">
-                  <Button size="sm" variant="ghost" className="h-8 gap-1.5 text-xs" onClick={() => openDialog(t)}>
-                    <Edit className="w-3.5 h-3.5" /> Editar
+                  <Button size="sm" variant="ghost" className="h-9 w-9 p-0 active:scale-95 transition-transform" onClick={() => openDialog(t)}>
+                    <Edit className="w-4 h-4" />
                   </Button>
-                  <Button size="sm" variant="ghost" className="h-8 gap-1.5 text-xs text-red-600 hover:text-red-700 hover:bg-red-50" onClick={() => setDeleteDialog({ open: true, id: t.id, name: TIPO_VIA_LABELS[t.tipoVia] || t.tipoVia })}>
-                    <Trash2 className="w-3.5 h-3.5" /> Eliminar
+                  <Button size="sm" variant="ghost" className="h-9 w-9 p-0 text-red-600 hover:text-red-700 hover:bg-red-50 active:scale-95 transition-transform" onClick={() => setDeleteDialog({ open: true, id: t.id, name: TIPO_VIA_LABELS[t.tipoVia] || t.tipoVia })}>
+                    <Trash2 className="w-4 h-4" />
                   </Button>
                 </div>
               </CardContent>
@@ -217,14 +217,14 @@ export function TarifasTab({ tarifas, loading, onRefresh }: TarifasTabProps) {
               <input
                 type="checkbox" id="tarifa-activa" checked={form.activa}
                 onChange={(e) => setForm({ ...form, activa: e.target.checked })}
-                className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                className="w-5 h-5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
               />
               <Label htmlFor="tarifa-activa">Tarifa activa</Label>
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancelar</Button>
-            <Button onClick={save} className="bg-emerald-600 hover:bg-emerald-700" disabled={!form.precioBase || !form.precioPorKm || !form.precioPorM3}>
+            <Button variant="outline" onClick={() => setDialogOpen(false)} className="active:scale-95 transition-transform">Cancelar</Button>
+            <Button onClick={save} className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-transform h-9" disabled={!form.precioBase || !form.precioPorKm || !form.precioPorM3}>
               {editing ? 'Actualizar' : 'Guardar'}
             </Button>
           </DialogFooter>

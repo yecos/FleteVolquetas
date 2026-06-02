@@ -22,7 +22,10 @@ export async function GET(request: Request) {
     const viajes = await db.viaje.findMany({
       where,
       orderBy: { createdAt: 'desc' },
-      include: { volqueta: { select: { placa: true, conductor: true } } },
+      include: {
+        volqueta: { select: { placa: true, conductor: true } },
+        clienteRef: { select: { nombre: true } },
+      },
     })
     return NextResponse.json(viajes)
   } catch (error) {
@@ -45,6 +48,7 @@ export async function POST(request: Request) {
         toneladas: body.toneladas ? parseFloat(body.toneladas) : null,
         numViaje: body.numViaje ? parseInt(body.numViaje) : null,
         cliente: body.cliente || null,
+        clienteId: body.clienteId || null,
         hrIni: body.hrIni || null,
         hrFinal: body.hrFinal || null,
         klIni: body.klIni ? parseFloat(body.klIni) : null,
@@ -52,8 +56,12 @@ export async function POST(request: Request) {
         costoFlete: parseFloat(body.costoFlete),
         observaciones: body.observaciones || null,
         estado: body.estado || 'pendiente',
+        estadoPago: body.estadoPago || 'pendiente',
       },
-      include: { volqueta: { select: { placa: true } } },
+      include: {
+        volqueta: { select: { placa: true } },
+        clienteRef: { select: { nombre: true } },
+      },
     })
     return NextResponse.json(viaje, { status: 201 })
   } catch (error) {

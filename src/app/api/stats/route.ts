@@ -8,6 +8,8 @@ export async function GET() {
     const volquetasEnViaje = await db.volqueta.count({ where: { estado: 'en viaje' } })
     const volquetasMantenimiento = await db.volqueta.count({ where: { estado: 'mantenimiento' } })
 
+    const totalClientes = await db.cliente.count({ where: { activo: true } })
+
     const now = new Date()
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
     const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999)
@@ -17,10 +19,16 @@ export async function GET() {
     })
     const ingresosMes = viajesMes.reduce((acc, v) => acc + v.costoFlete, 0)
 
+    const viajesPendientesPago = await db.viaje.count({ where: { estadoPago: 'pendiente' } })
+    const viajesParcialesPago = await db.viaje.count({ where: { estadoPago: 'parcial' } })
+
     const viajesRecientes = await db.viaje.findMany({
       orderBy: { createdAt: 'desc' },
       take: 10,
-      include: { volqueta: { select: { placa: true } } },
+      include: {
+        volqueta: { select: { placa: true } },
+        clienteRef: { select: { nombre: true } },
+      },
     })
 
     return NextResponse.json({
@@ -28,8 +36,11 @@ export async function GET() {
       volquetasDisponibles,
       volquetasEnViaje,
       volquetasMantenimiento,
+      totalClientes,
       viajesMes: viajesMes.length,
       ingresosMes,
+      viajesPendientesPago,
+      viajesParcialesPago,
       viajesRecientes,
     })
   } catch (error) {

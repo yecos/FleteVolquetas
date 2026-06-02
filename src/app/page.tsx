@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useTheme } from 'next-themes'
 import { toast } from 'sonner'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Volqueta, Tarifa, Stats } from '@/lib/types'
@@ -10,21 +11,30 @@ import { CalculatorTab } from '@/components/calculator-tab'
 import { ViajesTab } from '@/components/viajes-tab'
 import { TarifasTab } from '@/components/tarifas-tab'
 import { DistanciasTab } from '@/components/distancias-tab'
+import { ClientesTab } from '@/components/clientes-tab'
 import {
   Truck, Calculator, History, Settings, LayoutDashboard, Route,
+  Moon, Sun, Users,
 } from 'lucide-react'
 
 const NAV_ITEMS = [
   { value: 'dashboard', label: 'Panel', icon: LayoutDashboard },
   { value: 'volquetas', label: 'Volquetas', icon: Truck },
+  { value: 'clientes', label: 'Clientes', icon: Users },
   { value: 'calcular', label: 'Calcular', icon: Calculator },
-  { value: 'distancias', label: 'Distancias', icon: Route },
   { value: 'viajes', label: 'Viajes', icon: History },
   { value: 'tarifas', label: 'Tarifas', icon: Settings },
 ] as const
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('dashboard')
+  const [calculatorSubTab, setCalculatorSubTab] = useState<'calcular' | 'distancias'>('calcular')
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // ─── Dashboard State ───
   const [stats, setStats] = useState<Stats | null>(null)
@@ -118,25 +128,46 @@ export default function Home() {
     if (activeTab === 'dashboard') fetchStats()
   }, [activeTab, fetchStats])
 
+  // Handle tab change - reset calculator sub-tab when leaving calcular
+  const handleTabChange = (value: string) => {
+    setActiveTab(value)
+    if (value === 'calcular') {
+      setCalculatorSubTab('calcular')
+    }
+  }
+
   // ─── Render ────────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-emerald-50/30">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-emerald-50/30 dark:from-gray-950 dark:to-emerald-950/20">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+      <header className="border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-200">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-200 dark:shadow-emerald-900/40">
                 <Truck className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold bg-gradient-to-r from-emerald-800 to-emerald-600 bg-clip-text text-transparent">FleteVolquetas</h1>
+                <h1 className="text-lg font-bold bg-gradient-to-r from-emerald-800 to-emerald-600 dark:from-emerald-400 dark:to-emerald-300 bg-clip-text text-transparent">FleteVolquetas</h1>
                 <p className="text-xs text-muted-foreground hidden sm:block">Sistema de Gestión de Fletes</p>
               </div>
             </div>
-            <div className="text-xs text-muted-foreground hidden md:block">
-              {new Date().toLocaleDateString('es-CO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            <div className="flex items-center gap-2">
+              <div className="text-xs text-muted-foreground hidden md:block">
+                {new Date().toLocaleDateString('es-CO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+              </div>
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors active:scale-95"
+                aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              >
+                {mounted && (theme === 'dark' ? (
+                  <Sun className="w-4 h-4 text-amber-500" />
+                ) : (
+                  <Moon className="w-4 h-4 text-muted-foreground" />
+                ))}
+              </button>
             </div>
           </div>
         </div>
@@ -144,17 +175,17 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 pb-24 sm:pb-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           {/* Desktop Tab Navigation - hidden on mobile */}
           <div className="mb-6 hidden sm:block">
-            <TabsList className="w-full grid grid-cols-6 h-auto gap-1 bg-white/80 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border">
+            <TabsList className="w-full grid grid-cols-6 h-auto gap-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-1.5 rounded-xl shadow-sm border">
               {NAV_ITEMS.map((item) => {
                 const Icon = item.icon
                 return (
                   <TabsTrigger
                     key={item.value}
                     value={item.value}
-                    className="gap-1.5 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 transition-all duration-300"
+                    className="gap-1.5 text-xs sm:text-sm py-2.5 rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-md data-[state=active]:shadow-emerald-200 dark:data-[state=active]:shadow-emerald-900/40 transition-all duration-300"
                   >
                     <Icon className="w-3.5 h-3.5" />
                     <span>{item.label}</span>
@@ -177,16 +208,49 @@ export default function Home() {
             />
           </TabsContent>
 
-          <TabsContent value="calcular">
-            <CalculatorTab
-              volquetas={volquetas}
-              onStatsRefresh={fetchStats}
-              onViajesRefresh={() => {/* ViajesTab manages its own data */}}
-            />
+          <TabsContent value="clientes">
+            <ClientesTab onRefresh={fetchStats} />
           </TabsContent>
 
-          <TabsContent value="distancias">
-            <DistanciasTab />
+          <TabsContent value="calcular">
+            {/* Sub-tab switcher for Calcular / Distancias */}
+            <div className="flex items-center gap-1 mb-4 bg-muted/50 dark:bg-muted/30 p-1 rounded-lg w-fit">
+              <button
+                onClick={() => setCalculatorSubTab('calcular')}
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all active:scale-95 ${
+                  calculatorSubTab === 'calcular'
+                    ? 'bg-white dark:bg-gray-800 shadow-sm text-emerald-700 dark:text-emerald-400'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <span className="flex items-center gap-1.5">
+                  <Calculator className="w-3.5 h-3.5" />
+                  Calcular Flete
+                </span>
+              </button>
+              <button
+                onClick={() => setCalculatorSubTab('distancias')}
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all active:scale-95 ${
+                  calculatorSubTab === 'distancias'
+                    ? 'bg-white dark:bg-gray-800 shadow-sm text-emerald-700 dark:text-emerald-400'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <span className="flex items-center gap-1.5">
+                  <Route className="w-3.5 h-3.5" />
+                  Distancias
+                </span>
+              </button>
+            </div>
+            {calculatorSubTab === 'calcular' ? (
+              <CalculatorTab
+                volquetas={volquetas}
+                onStatsRefresh={fetchStats}
+                onViajesRefresh={() => {/* ViajesTab manages its own data */}}
+              />
+            ) : (
+              <DistanciasTab />
+            )}
           </TabsContent>
 
           <TabsContent value="viajes">
@@ -207,7 +271,7 @@ export default function Home() {
       </main>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] mobile-nav-safe" aria-label="Navegación principal">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 shadow-[0_-2px_10px_rgba(0,0,0,0.06)] mobile-nav-safe" aria-label="Navegación principal">
         <div className="grid grid-cols-6 h-16">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon
@@ -215,19 +279,19 @@ export default function Home() {
             return (
               <button
                 key={item.value}
-                onClick={() => setActiveTab(item.value)}
-                className={`flex flex-col items-center justify-center gap-0.5 transition-colors duration-200 relative ${
+                onClick={() => handleTabChange(item.value)}
+                className={`flex flex-col items-center justify-center gap-0.5 transition-all duration-200 relative min-h-[44px] active:scale-95 ${
                   isActive
-                    ? 'text-emerald-600'
-                    : 'text-gray-400 active:text-gray-600'
+                    ? 'text-emerald-600 dark:text-emerald-400'
+                    : 'text-gray-400 active:text-gray-600 dark:text-gray-500'
                 }`}
                 aria-current={isActive ? 'page' : undefined}
               >
                 {isActive && (
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-emerald-500" />
                 )}
-                <Icon className={`w-4 h-4 transition-transform duration-200 ${isActive ? 'scale-110' : ''}`} />
-                <span className={`text-[9px] font-medium leading-tight ${isActive ? 'font-semibold' : ''}`}>
+                <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'scale-110' : ''}`} />
+                <span className={`text-[10px] font-medium leading-tight ${isActive ? 'font-semibold' : ''}`}>
                   {item.label}
                 </span>
               </button>
@@ -236,8 +300,8 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Footer */}
-      <footer className="border-t mt-auto bg-white/60">
+      {/* Footer - Hidden on mobile */}
+      <footer className="border-t mt-auto bg-white/60 dark:bg-gray-900/60 hidden sm:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-center text-xs text-muted-foreground">
             FleteVolquetas &copy; {new Date().getFullYear()} — Sistema de Cálculo y Gestión de Fletes para Volquetas

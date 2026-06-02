@@ -1,13 +1,13 @@
 'use client'
 
-import { Stats, Viaje, formatCurrency, formatDate, ESTADO_LABELS, estadoColor } from '@/lib/types'
+import { Stats, Viaje, formatCurrency, formatDate, ESTADO_LABELS, estadoColor, ESTADO_PAGO_LABELS, estadoPagoColor } from '@/lib/types'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table'
-import { Truck, ArrowRightLeft, DollarSign, Activity, Clock, TrendingUp } from 'lucide-react'
+import { Truck, ArrowRightLeft, DollarSign, Activity, Clock, TrendingUp, Users, AlertCircle } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 
 interface DashboardTabProps {
@@ -21,8 +21,8 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
   if (loading) {
     return (
       <div className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {Array.from({ length: 4 }).map((_, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {Array.from({ length: 5 }).map((_, i) => (
             <Card key={i} className="overflow-hidden">
               <CardContent className="p-6">
                 <Skeleton className="h-4 w-24 mb-3" />
@@ -66,13 +66,27 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
       ),
     },
     {
-      title: 'Viajes del Mes',
-      value: stats.viajesMes,
-      icon: ArrowRightLeft,
+      title: 'Clientes Activos',
+      value: stats.totalClientes || 0,
+      icon: Users,
       gradient: 'from-teal-500 to-teal-600',
       gradientBg: 'from-teal-50 to-teal-100/60',
       iconBg: 'bg-teal-500',
-      detail: <p className="text-xs text-muted-foreground mt-1">Viajes realizados este mes</p>,
+      detail: <p className="text-xs text-muted-foreground mt-1">Clientes registrados</p>,
+    },
+    {
+      title: 'Viajes del Mes',
+      value: stats.viajesMes,
+      icon: ArrowRightLeft,
+      gradient: 'from-sky-500 to-sky-600',
+      gradientBg: 'from-sky-50 to-sky-100/60',
+      iconBg: 'bg-sky-500',
+      detail: (
+        <div className="flex gap-2 mt-2">
+          <Badge variant="outline" className="text-red-700 bg-red-50 text-xs border-red-200">{stats.viajesPendientesPago || 0} sin pagar</Badge>
+          <Badge variant="outline" className="text-amber-700 bg-amber-50 text-xs border-amber-200">{stats.viajesParcialesPago || 0} parcial</Badge>
+        </div>
+      ),
     },
     {
       title: 'Ingresos del Mes',
@@ -97,13 +111,13 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
   return (
     <div className="space-y-6">
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {statCards.map((card, i) => {
           const Icon = card.icon
           return (
             <Card
               key={i}
-              className="relative overflow-hidden group hover:shadow-lg hover:scale-[1.02] transition-all duration-300 border-0 shadow-sm cursor-default"
+              className="relative overflow-hidden group hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border-0 shadow-sm cursor-default"
             >
               {/* Subtle gradient background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${card.gradientBg} opacity-50 group-hover:opacity-80 transition-opacity duration-300 pointer-events-none`} />
@@ -140,7 +154,7 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
           </CardHeader>
           <CardContent>
             {chartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={220}>
+              <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={chartData} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                   <XAxis dataKey="name" tick={{ fontSize: 11 }} stroke="#94a3b8" />
@@ -157,7 +171,7 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-[220px] flex items-center justify-center text-muted-foreground text-sm">
+              <div className="h-[200px] flex items-center justify-center text-muted-foreground text-sm">
                 No hay datos de ingresos para mostrar
               </div>
             )}
@@ -182,13 +196,14 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
                     <TableHead>Volqueta</TableHead>
                     <TableHead className="hidden sm:table-cell">Ruta</TableHead>
                     <TableHead>Estado</TableHead>
+                    <TableHead className="hidden sm:table-cell">Pago</TableHead>
                     <TableHead className="text-right">Flete</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {stats.viajesRecientes.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
+                      <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
                         No hay viajes registrados
                       </TableCell>
                     </TableRow>
@@ -203,6 +218,11 @@ export function DashboardTab({ stats, loading }: DashboardTabProps) {
                         <TableCell>
                           <Badge variant="outline" className={`${estadoColor(viaje.estado)} text-xs`}>
                             {ESTADO_LABELS[viaje.estado] || viaje.estado}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="hidden sm:table-cell">
+                          <Badge variant="outline" className={`${estadoPagoColor(viaje.estadoPago)} text-xs`}>
+                            {ESTADO_PAGO_LABELS[viaje.estadoPago] || viaje.estadoPago}
                           </Badge>
                         </TableCell>
                         <TableCell className="text-right font-semibold text-emerald-700 text-sm whitespace-nowrap">

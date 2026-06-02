@@ -198,11 +198,11 @@ export function DistanciasTab() {
       <div className="grid grid-cols-3 gap-3">
         <Card className="border-0 shadow-sm">
           <CardContent className="p-3 sm:p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-50 to-emerald-100 shrink-0">
+            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950 dark:to-emerald-900 shrink-0">
               <Navigation className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
             </div>
             <div className="min-w-0">
-              <p className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight truncate">
+              <p className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight truncate">
                 {formattedTotal} <span className="text-xs sm:text-sm font-normal text-slate-400">km</span>
               </p>
               <p className="text-[11px] sm:text-xs text-slate-500 font-medium">Total</p>
@@ -211,11 +211,11 @@ export function DistanciasTab() {
         </Card>
         <Card className="border-0 shadow-sm">
           <CardContent className="p-3 sm:p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 shrink-0">
+            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 shrink-0">
               <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
             </div>
             <div className="min-w-0">
-              <p className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight">
+              <p className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">
                 {completedCount}<span className="text-xs sm:text-sm font-normal text-slate-400">/{rows.length}</span>
               </p>
               <p className="text-[11px] sm:text-xs text-slate-500 font-medium">Calculadas</p>
@@ -224,11 +224,11 @@ export function DistanciasTab() {
         </Card>
         <Card className="border-0 shadow-sm">
           <CardContent className="p-3 sm:p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 shrink-0">
+            <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950 dark:to-amber-900 shrink-0">
               <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
             </div>
             <div className="min-w-0">
-              <p className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight">{errorCount}</p>
+              <p className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">{errorCount}</p>
               <p className="text-[11px] sm:text-xs text-slate-500 font-medium">Errores</p>
             </div>
           </CardContent>
@@ -239,12 +239,12 @@ export function DistanciasTab() {
       <Card className="border-0 shadow-sm overflow-hidden">
         <Collapsible open={lugarPanelOpen} onOpenChange={setLugarPanelOpen}>
           <CollapsibleTrigger className="w-full text-left">
-            <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 hover:bg-amber-50/50 transition-colors cursor-pointer">
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-amber-50 shrink-0">
+            <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 hover:bg-amber-50/50 dark:hover:bg-amber-950/30 transition-colors cursor-pointer">
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-950 shrink-0">
                 <MapPin className="w-4 h-4 text-amber-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-slate-800">Mis Lugares</p>
+                <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Mis Lugares</p>
                 <p className="text-xs text-slate-500 truncate">{lugaresStats.etiquetados} etiquetados + {lugaresStats.guardados} guardados = {lugaresStats.total} sitios</p>
               </div>
               <div className="flex items-center gap-1 shrink-0 mr-2">
@@ -259,14 +259,14 @@ export function DistanciasTab() {
             </div>
           </CollapsibleTrigger>
           <CollapsibleContent>
-            <div className="border-t border-slate-100 px-4 sm:px-5 py-3 space-y-2">
+            <div className="border-t border-slate-100 dark:border-slate-800 px-4 sm:px-5 py-3 space-y-2">
               <div className="relative">
                 <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
                 <Input
                   placeholder="Buscar lugar..."
                   value={lugarSearch}
                   onChange={e => setLugarSearch(e.target.value)}
-                  className="h-8 pl-8 pr-8 bg-slate-50/80 border-slate-200 text-sm"
+                  className="h-8 pl-8 pr-8 bg-slate-50/80 dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-sm"
                 />
                 {lugarSearch && (
                   <button onClick={() => setLugarSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
@@ -274,11 +274,11 @@ export function DistanciasTab() {
                   </button>
                 )}
               </div>
-              <div className="max-h-40 overflow-y-auto rounded-lg border border-slate-200/60 divide-y divide-slate-100">
+              <div className="max-h-40 overflow-y-auto rounded-lg border border-slate-200/60 dark:border-slate-700/60 divide-y divide-slate-100 dark:divide-slate-800">
                 {searchLugares(lugarSearch).slice(0, 30).map((lugar) => (
                   <button
                     key={lugar.id}
-                    className="w-full text-left px-3 py-1.5 flex items-center gap-2 hover:bg-emerald-50/50 transition-colors"
+                    className="w-full text-left px-3 py-1.5 flex items-center gap-2 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30 transition-colors active:scale-[0.99]"
                     onClick={() => {
                       const targetRow = rows.find(r => !r.origin.trim())
                       if (targetRow) {
@@ -291,7 +291,7 @@ export function DistanciasTab() {
                     }}
                   >
                     <MapPin className={`w-3 h-3 shrink-0 ${lugar.source === 'etiquetado' ? 'text-amber-500' : 'text-blue-500'}`} />
-                    <span className="text-xs text-slate-700 truncate flex-1">{lugar.name}</span>
+                    <span className="text-xs text-slate-700 dark:text-slate-300 truncate flex-1">{lugar.name}</span>
                     <Badge className={`text-[9px] shrink-0 px-1 py-0 h-4 border-0 ${lugar.source === 'etiquetado' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'}`}>
                       {lugar.source === 'etiquetado' ? '★' : '🔖'}
                     </Badge>
@@ -307,14 +307,14 @@ export function DistanciasTab() {
       <Card className="border-0 shadow-sm overflow-hidden">
         <Collapsible open={importOpen} onOpenChange={setImportOpen}>
           <CollapsibleTrigger className="w-full text-left">
-            <div className="flex items-center gap-3 px-4 sm:px-5 py-3 hover:bg-emerald-50/30 transition-colors cursor-pointer">
+            <div className="flex items-center gap-3 px-4 sm:px-5 py-3 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 transition-colors cursor-pointer">
               <Upload className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-medium text-slate-700">Importar Lugares</span>
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Importar Lugares</span>
               {importOpen ? <ChevronUp className="w-4 h-4 text-slate-400 ml-auto" /> : <ChevronDown className="w-4 h-4 text-slate-400 ml-auto" />}
             </div>
           </CollapsibleTrigger>
           <CollapsibleContent>
-            <div className="border-t border-slate-100 px-4 sm:px-5 py-4 space-y-3">
+            <div className="border-t border-slate-100 dark:border-slate-800 px-4 sm:px-5 py-4 space-y-3">
               <div className="flex gap-2">
                 <Button
                   size="sm"
@@ -328,7 +328,7 @@ export function DistanciasTab() {
                       } else toast.error('Portapapeles vacio')
                     } catch { toast.error('No se pudo acceder al portapapeles') }
                   }}
-                  className="text-xs"
+                  className="text-xs active:scale-95 transition-transform py-2"
                 >
                   <ClipboardPaste className="w-3 h-3 mr-1" />
                   Pegar del portapapeles
@@ -355,8 +355,8 @@ export function DistanciasTab() {
                       <button
                         key={m.key}
                         onClick={() => setImportMode(m.key as typeof importMode)}
-                        className={`px-2 py-1 rounded-md text-[10px] font-medium transition-colors ${
-                          importMode === m.key ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        className={`px-2 py-2 rounded-md text-[10px] font-medium transition-colors active:scale-95 ${
+                          importMode === m.key ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                         }`}
                       >{m.label}</button>
                     ))}
@@ -379,7 +379,7 @@ export function DistanciasTab() {
                   onClick={handleImportFromText}
                   disabled={parseLocations(importText).length < 2}
                   size="sm"
-                  className="bg-emerald-600 hover:bg-emerald-700 text-xs"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-xs active:scale-95 transition-transform py-2"
                 >
                   <Calculator className="w-3 h-3 mr-1" />
                   Importar ({parseLocations(importText).length} lugares)
@@ -398,14 +398,14 @@ export function DistanciasTab() {
               <CardTitle className="text-base">Rutas</CardTitle>
               <CardDescription>Agrega origen y destino para cada ruta</CardDescription>
             </div>
-            <div className="flex gap-2">
-              <Button onClick={addRow} size="sm" variant="outline" className="text-xs">
+            <div className="flex flex-wrap gap-2">
+              <Button onClick={addRow} size="sm" variant="outline" className="text-xs active:scale-95 transition-transform">
                 <Plus className="w-3 h-3 mr-1" /> Agregar
               </Button>
               <Button
                 onClick={calculateAll}
                 size="sm"
-                className="bg-emerald-600 hover:bg-emerald-700 text-xs"
+                className="bg-emerald-600 hover:bg-emerald-700 text-xs active:scale-95 transition-transform"
                 disabled={isCalculatingAll || rows.filter(r => r.origin.trim() && r.destination.trim() && r.status !== 'success').length === 0}
               >
                 {isCalculatingAll ? (
@@ -414,10 +414,10 @@ export function DistanciasTab() {
                   <><Navigation className="w-3 h-3 mr-1" /> Calcular Todas</>
                 )}
               </Button>
-              <Button onClick={exportToCSV} size="sm" variant="outline" className="text-xs" disabled={completedCount === 0}>
+              <Button onClick={exportToCSV} size="sm" variant="outline" className="text-xs active:scale-95 transition-transform" disabled={completedCount === 0}>
                 <Download className="w-3 h-3 mr-1" /> Exportar CSV
               </Button>
-              <Button onClick={clearAll} size="sm" variant="ghost" className="text-xs text-red-500 hover:text-red-700">
+              <Button onClick={clearAll} size="sm" variant="ghost" className="text-xs text-red-500 hover:text-red-700 active:scale-95 transition-transform">
                 <Trash2 className="w-3 h-3" />
               </Button>
             </div>
@@ -427,56 +427,86 @@ export function DistanciasTab() {
           {rows.map((row) => (
             <div
               key={row.id}
-              className={`grid gap-2 items-center p-3 rounded-lg border transition-colors ${
-                row.status === 'success' ? 'bg-emerald-50/50 border-emerald-200/60' :
-                row.status === 'error' ? 'bg-red-50/50 border-red-200/60' :
-                row.status === 'loading' ? 'bg-blue-50/30 border-blue-200/40' :
-                'bg-white border-slate-200/60'
+              className={`flex flex-col sm:grid gap-2 sm:gap-2 items-start sm:items-center p-3 rounded-lg border transition-colors ${
+                row.status === 'success' ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200/60 dark:border-emerald-800/40' :
+                row.status === 'error' ? 'bg-red-50/50 dark:bg-red-950/20 border-red-200/60 dark:border-red-800/40' :
+                row.status === 'loading' ? 'bg-blue-50/30 dark:bg-blue-950/20 border-blue-200/40 dark:border-blue-800/30' :
+                'bg-white dark:bg-gray-900 border-slate-200/60 dark:border-slate-700/60'
               }`}
-              style={{ gridTemplateColumns: '1fr 1fr auto auto auto' }}
+              style={typeof window !== 'undefined' && window.innerWidth >= 640 ? { gridTemplateColumns: '1fr 1fr auto auto auto' } : undefined}
             >
               {/* Origin */}
-              <PlacesAutocomplete
-                value={row.origin}
-                onChange={(val) => updateField(row.id, 'origin', val)}
-                placeholder="Origen"
-                icon={<MapPin className="w-3.5 h-3.5 text-emerald-500" />}
-              />
-
-              {/* Destination */}
-              <PlacesAutocomplete
-                value={row.destination}
-                onChange={(val) => updateField(row.id, 'destination', val)}
-                placeholder="Destino"
-                icon={<MapPin className="w-3.5 h-3.5 text-red-500" />}
-              />
-
-              {/* Distance / Status */}
-              <div className="min-w-[90px] text-center">
-                {row.status === 'loading' && (
-                  <Loader2 className="w-4 h-4 animate-spin text-emerald-500 mx-auto" />
-                )}
-                {row.status === 'success' && row.distanceKm !== null && (
-                  <div>
-                    <span className="text-sm font-bold text-emerald-700">{row.distanceKm}</span>
-                    <span className="text-xs text-slate-400 ml-0.5">km</span>
-                    {row.provider && (
-                      <Badge className="text-[8px] px-1 py-0 h-3 ml-1 border-0 bg-slate-100 text-slate-500">
-                        {row.provider === 'openstreetmap' ? 'OSM' : row.provider === 'google_maps' ? 'G' : '~'}
-                      </Badge>
-                    )}
-                  </div>
-                )}
-                {row.status === 'error' && (
-                  <span className="text-xs text-red-500 truncate max-w-[90px] block" title={row.error}>{row.error || 'Error'}</span>
-                )}
-                {row.status === 'idle' && (
-                  <span className="text-xs text-slate-400">— km</span>
-                )}
+              <div className="w-full sm:w-auto">
+                <PlacesAutocomplete
+                  value={row.origin}
+                  onChange={(val) => updateField(row.id, 'origin', val)}
+                  placeholder="Origen"
+                  icon={<MapPin className="w-3.5 h-3.5 text-emerald-500" />}
+                />
               </div>
 
-              {/* Google Maps link */}
-              <div className="flex items-center">
+              {/* Destination */}
+              <div className="w-full sm:w-auto">
+                <PlacesAutocomplete
+                  value={row.destination}
+                  onChange={(val) => updateField(row.id, 'destination', val)}
+                  placeholder="Destino"
+                  icon={<MapPin className="w-3.5 h-3.5 text-red-500" />}
+                />
+              </div>
+
+              {/* Distance / Status + Actions row on mobile */}
+              <div className="flex items-center justify-between w-full sm:w-auto sm:min-w-[90px] sm:justify-center sm:text-center">
+                <div className="flex-1 sm:flex-none">
+                  {row.status === 'loading' && (
+                    <Loader2 className="w-4 h-4 animate-spin text-emerald-500 sm:mx-auto" />
+                  )}
+                  {row.status === 'success' && row.distanceKm !== null && (
+                    <div>
+                      <span className="text-sm font-bold text-emerald-700 dark:text-emerald-400">{row.distanceKm}</span>
+                      <span className="text-xs text-slate-400 ml-0.5">km</span>
+                      {row.provider && (
+                        <Badge className="text-[8px] px-1 py-0 h-3 ml-1 border-0 bg-slate-100 dark:bg-slate-800 text-slate-500">
+                          {row.provider === 'openstreetmap' ? 'OSM' : row.provider === 'google_maps' ? 'G' : '~'}
+                        </Badge>
+                      )}
+                    </div>
+                  )}
+                  {row.status === 'error' && (
+                    <span className="text-xs text-red-500 truncate max-w-[120px] sm:max-w-[90px] block" title={row.error}>{row.error || 'Error'}</span>
+                  )}
+                  {row.status === 'idle' && (
+                    <span className="text-xs text-slate-400 sm:hidden">Pendiente</span>
+                  )}
+                  {row.status === 'idle' && (
+                    <span className="text-xs text-slate-400 hidden sm:inline">— km</span>
+                  )}
+                </div>
+
+                {/* Actions on mobile: inline */}
+                <div className="flex items-center gap-2 sm:hidden">
+                  {row.origin && row.destination && (
+                    <a
+                      href={getGoogleMapsUrl(row.origin, row.destination)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-400 hover:text-emerald-600 transition-colors p-1 active:scale-95"
+                      title="Ver en Google Maps"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  <button
+                    onClick={() => removeRow(row.id)}
+                    className="text-slate-400 hover:text-red-500 transition-colors p-1 active:scale-95"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Google Maps link - desktop only */}
+              <div className="hidden sm:flex items-center">
                 {row.origin && row.destination && (
                   <a
                     href={getGoogleMapsUrl(row.origin, row.destination)}
@@ -490,10 +520,10 @@ export function DistanciasTab() {
                 )}
               </div>
 
-              {/* Delete */}
+              {/* Delete - desktop only */}
               <button
                 onClick={() => removeRow(row.id)}
-                className="text-slate-400 hover:text-red-500 transition-colors"
+                className="hidden sm:block text-slate-400 hover:text-red-500 transition-colors active:scale-95"
               >
                 <X className="w-3.5 h-3.5" />
               </button>

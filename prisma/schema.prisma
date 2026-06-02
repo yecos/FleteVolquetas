@@ -46,14 +46,46 @@ model Viaje {
   toneladas    Float?
   numViaje     Int?
   cliente      String?
+  clienteId    String?
+  clienteRef   Cliente? @relation(fields: [clienteId], references: [id])
   hrIni        String?
   hrFinal      String?
   klIni        Float?
   klFinal      Float?
   costoFlete   Float
   observaciones String?
+  estadoPago   String   @default("pendiente")
   fecha        DateTime @default(now())
   estado       String   @default("pendiente")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  pagos        Pago[]
+}
+
+model Cliente {
+  id          String   @id @default(cuid())
+  nombre      String
+  documento   String?
+  telefono    String?
+  email       String?
+  direccion   String?
+  ciudad      String?
+  notas       String?
+  activo      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  viajes      Viaje[]
+}
+
+model Pago {
+  id          String   @id @default(cuid())
+  viajeId     String
+  viaje       Viaje    @relation(fields: [viajeId], references: [id])
+  monto       Float
+  metodo      String
+  referencia  String?
+  fechaPago   DateTime @default(now())
+  notas       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

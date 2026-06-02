@@ -34,6 +34,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
   const [calculandoDistancia, setCalculandoDistancia] = useState(false)
   const [distanciaProvider, setDistanciaProvider] = useState<string | null>(null)
   const debounceDistRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const resultRef = useRef<HTMLDivElement>(null)
 
   // Auto-calculate distance when both origin and destination are filled
   useEffect(() => {
@@ -90,6 +91,10 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
       setCalcResult(data)
       requestAnimationFrame(() => {
         setResultVisible(true)
+        // Scroll result into view on mobile
+        setTimeout(() => {
+          resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 100)
       })
     } catch {
       toast.error('Error al calcular el flete')
@@ -191,8 +196,8 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
               </div>
             </div>
 
-            {/* Distancia con indicador de auto-cálculo */}
-            <div className="grid grid-cols-3 gap-4">
+            {/* Distancia con indicador de auto-cálculo - Responsive grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <Label className="text-sm font-medium flex items-center gap-1.5">
                   # Viajes
@@ -219,7 +224,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
                   className="h-10"
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 col-span-2 sm:col-span-1">
                 <Label className="text-sm font-medium">Metros cúbicos (m³)</Label>
                 <Input type="number" placeholder="14" value={form.metrosCubicos} onChange={(e) => setForm({ ...form, metrosCubicos: e.target.value })} className="h-10" />
               </div>
@@ -262,7 +267,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
 
             <Button
               onClick={calcularFlete}
-              className="w-full bg-emerald-600 hover:bg-emerald-700 h-11 text-base font-medium"
+              className="w-full bg-emerald-600 hover:bg-emerald-700 h-11 text-base font-medium active:scale-95 transition-transform"
               disabled={!form.numViajes || !form.distanciaKm || !form.metrosCubicos || !form.tipoVia || calculating}
             >
               {calculating ? (
@@ -280,9 +285,9 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
           </CardContent>
         </Card>
 
-        {/* Result Card - Sticky on desktop */}
-        <div className="lg:sticky lg:top-24">
-          <Card className={`border-0 shadow-sm transition-all duration-500 ${calcResult ? 'ring-2 ring-emerald-200 bg-emerald-50/30' : ''} ${resultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+        {/* Result Card - Sticky on desktop, ref for scroll on mobile */}
+        <div className="lg:sticky lg:top-24" ref={resultRef}>
+          <Card className={`border-0 shadow-sm transition-all duration-500 ${calcResult ? 'ring-2 ring-emerald-200 dark:ring-emerald-800 bg-emerald-50/30 dark:bg-emerald-950/20' : ''} ${resultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
             <CardHeader>
               <CardTitle className="text-base flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-emerald-600" />
@@ -325,7 +330,7 @@ export function CalculatorTab({ volquetas, onStatsRefresh, onViajesRefresh }: Ca
                   {form.volquetaId && form.origen && form.destino && (
                     <Button
                       onClick={registrarViaje}
-                      className="w-full h-12 text-base font-medium border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors"
+                      className="w-full h-12 text-base font-medium border-2 border-emerald-600 text-emerald-700 dark:text-emerald-400 dark:border-emerald-500 hover:bg-emerald-600 hover:text-white transition-colors active:scale-95"
                       variant="outline"
                       disabled={savingViaje}
                     >

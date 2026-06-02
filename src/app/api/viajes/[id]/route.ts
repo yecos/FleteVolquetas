@@ -34,6 +34,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
         toneladas: body.toneladas ? parseFloat(body.toneladas) : null,
         numViaje: body.numViaje ? parseInt(body.numViaje, 10) : null,
         cliente: body.cliente || null,
+        clienteId: body.clienteId || null,
         hrIni: body.hrIni || null,
         hrFinal: body.hrFinal || null,
         klIni: body.klIni ? parseFloat(body.klIni) : null,
@@ -41,8 +42,12 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
         costoFlete: parseFloat(body.costoFlete),
         observaciones: body.observaciones || null,
         estado: body.estado,
+        estadoPago: body.estadoPago,
       },
-      include: { volqueta: { select: { placa: true } } },
+      include: {
+        volqueta: { select: { placa: true } },
+        clienteRef: { select: { nombre: true } },
+      },
     })
     return NextResponse.json(viaje)
   } catch (error: unknown) {

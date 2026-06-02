@@ -1,6 +1,6 @@
 'use client'
 
-import { Viaje, Volqueta, TIPO_VIA_LABELS, TIPO_CARGUE_LABELS, ESTADO_LABELS, estadoColor, formatCurrency, formatDate } from '@/lib/types'
+import { Viaje, Volqueta, TIPO_VIA_LABELS, TIPO_CARGUE_LABELS, ESTADO_LABELS, estadoColor, formatCurrency, formatDate, ESTADO_PAGO_LABELS, estadoPagoColor } from '@/lib/types'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -164,7 +164,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
           </h2>
           <p className="text-sm text-muted-foreground">Consulta y gestiona todos los viajes realizados</p>
         </div>
-        <Button onClick={() => openDialog()} className="bg-emerald-600 hover:bg-emerald-700">
+        <Button onClick={() => openDialog()} className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-transform">
           <Plus className="w-4 h-4 mr-2" />
           Nuevo Viaje
         </Button>
@@ -174,7 +174,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
       <Card className="border-0 shadow-sm">
         <CardContent className="p-0">
           <button
-            className="w-full flex items-center justify-between p-4 hover:bg-muted/30 transition-colors rounded-lg"
+            className="w-full flex items-center justify-between p-4 hover:bg-muted/30 transition-colors rounded-lg active:scale-[0.99]"
             onClick={() => setFiltersExpanded(!filtersExpanded)}
           >
             <span className="flex items-center gap-2 text-sm font-medium">
@@ -226,8 +226,8 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
         </CardContent>
       </Card>
 
-      {/* Table */}
-      <Card className="border-0 shadow-sm overflow-hidden">
+      {/* Desktop Table - Hidden on mobile */}
+      <Card className="border-0 shadow-sm overflow-hidden hidden sm:block">
         <CardContent className="p-0">
           <div className="overflow-x-auto max-h-[500px] overflow-y-auto">
             <table className="w-full text-sm">
@@ -241,6 +241,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
                   <th className="text-left p-3 font-medium text-muted-foreground hidden xl:table-cell">Cargue</th>
                   <th className="text-left p-3 font-medium text-muted-foreground hidden xl:table-cell">m³</th>
                   <th className="text-left p-3 font-medium text-muted-foreground">Estado</th>
+                  <th className="text-left p-3 font-medium text-muted-foreground hidden lg:table-cell">Pago</th>
                   <th className="text-right p-3 font-medium text-muted-foreground">Flete</th>
                   <th className="text-right p-3 font-medium text-muted-foreground">Acc.</th>
                 </tr>
@@ -249,14 +250,14 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
                 {loading ? (
                   Array.from({ length: 5 }).map((_, i) => (
                     <tr key={i}>
-                      {Array.from({ length: 10 }).map((_, j) => (
+                      {Array.from({ length: 11 }).map((_, j) => (
                         <td key={j} className="p-3"><Skeleton className="h-4 w-14" /></td>
                       ))}
                     </tr>
                   ))
                 ) : viajes.length === 0 ? (
                   <tr>
-                    <td colSpan={10} className="text-center text-muted-foreground py-12">
+                    <td colSpan={11} className="text-center text-muted-foreground py-12">
                       No se encontraron viajes
                     </td>
                   </tr>
@@ -277,15 +278,20 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
                           {ESTADO_LABELS[viaje.estado] || viaje.estado}
                         </Badge>
                       </td>
+                      <td className="p-3 hidden lg:table-cell">
+                        <Badge variant="outline" className={`${estadoPagoColor(viaje.estadoPago)} text-xs`}>
+                          {ESTADO_PAGO_LABELS[viaje.estadoPago] || viaje.estadoPago}
+                        </Badge>
+                      </td>
                       <td className="p-3 text-right font-semibold text-emerald-700 whitespace-nowrap">
                         {formatCurrency(viaje.costoFlete)}
                       </td>
                       <td className="p-3 text-right">
                         <div className="flex items-center justify-end gap-1">
-                          <Button size="icon" variant="ghost" className="h-8 w-8" onClick={() => openDialog(viaje)}>
+                          <Button size="icon" variant="ghost" className="h-9 w-9 active:scale-95 transition-transform" onClick={() => openDialog(viaje)}>
                             <Edit className="w-4 h-4" />
                           </Button>
-                          <Button size="icon" variant="ghost" className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => setDeleteDialog({ open: true, id: viaje.id, name: `${viaje.origen} → ${viaje.destino}` })}>
+                          <Button size="icon" variant="ghost" className="h-9 w-9 text-red-500 hover:text-red-700 hover:bg-red-50 active:scale-95 transition-transform" onClick={() => setDeleteDialog({ open: true, id: viaje.id, name: `${viaje.origen} → ${viaje.destino}` })}>
                             <Trash2 className="w-4 h-4" />
                           </Button>
                         </div>
@@ -299,9 +305,68 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
         </CardContent>
       </Card>
 
+      {/* Mobile Card View */}
+      <div className="sm:hidden space-y-3">
+        {loading ? (
+          Array.from({ length: 3 }).map((_, i) => (
+            <Card key={i} className="border-0 shadow-sm">
+              <CardContent className="p-4">
+                <Skeleton className="h-4 w-24 mb-2" />
+                <Skeleton className="h-6 w-32 mb-2" />
+                <Skeleton className="h-3 w-20" />
+              </CardContent>
+            </Card>
+          ))
+        ) : viajes.length === 0 ? (
+          <div className="text-center text-muted-foreground py-12">No se encontraron viajes</div>
+        ) : (
+          viajes.map((viaje) => (
+            <Card key={viaje.id} className="border-0 shadow-sm">
+              <CardContent className="p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-muted-foreground">{formatDate(viaje.fecha)}</p>
+                    <p className="font-medium text-sm">{viaje.volqueta?.placa || 'N/A'}</p>
+                  </div>
+                  <Badge variant="outline" className={`${estadoColor(viaje.estado)} text-xs`}>
+                    {ESTADO_LABELS[viaje.estado] || viaje.estado}
+                  </Badge>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                  <span className="truncate">{viaje.origen} → {viaje.destino}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-3 text-xs text-muted-foreground">
+                      <span>{viaje.distanciaKm} km</span>
+                      <span>{viaje.metrosCubicos} m³</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className={`${estadoPagoColor(viaje.estadoPago)} text-xs`}>
+                      {ESTADO_PAGO_LABELS[viaje.estadoPago] || viaje.estadoPago}
+                    </Badge>
+                    <span className="font-bold text-emerald-700 dark:text-emerald-400">{formatCurrency(viaje.costoFlete)}</span>
+                  </div>
+                </div>
+                <div className="flex gap-2 justify-end pt-1 border-t">
+                  <Button size="sm" variant="ghost" className="h-9 w-9 active:scale-95 transition-transform" onClick={() => openDialog(viaje)}>
+                    <Edit className="w-4 h-4" />
+                  </Button>
+                  <Button size="sm" variant="ghost" className="h-9 w-9 text-red-500 active:scale-95 transition-transform" onClick={() => setDeleteDialog({ open: true, id: viaje.id, name: `${viaje.origen} → ${viaje.destino}` })}>
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        )}
+      </div>
+
       {/* Viaje Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editing ? 'Editar Viaje' : 'Nuevo Viaje'}</DialogTitle>
             <DialogDescription>
@@ -322,7 +387,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
             </div>
 
             {/* Origen y Destino con autocompletado */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Origen</Label>
                 <PlacesAutocomplete
@@ -343,7 +408,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label className="flex items-center gap-1.5">
                   Distancia (km)
@@ -364,7 +429,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <Label>Tipo de Cargue</Label>
                 <Select value={form.tipoCargue} onValueChange={(val) => setForm({ ...form, tipoCargue: val })}>
@@ -386,7 +451,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label># Viaje</Label>
                 <Input type="number" placeholder="Número de viaje" value={form.numViaje} onChange={(e) => setForm({ ...form, numViaje: e.target.value })} />
@@ -397,7 +462,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Hr Ini</Label>
                 <Input type="text" placeholder="07:00" value={form.hrIni} onChange={(e) => setForm({ ...form, hrIni: e.target.value })} />
@@ -408,7 +473,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Kl Ini</Label>
                 <Input type="number" placeholder="Kilometraje inicial" value={form.klIni} onChange={(e) => setForm({ ...form, klIni: e.target.value })} />
@@ -419,7 +484,7 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Costo Flete ($)</Label>
                 <Input type="number" value={form.costoFlete} onChange={(e) => setForm({ ...form, costoFlete: e.target.value })} />
@@ -444,8 +509,8 @@ export function ViajesTab({ volquetas, onStatsRefresh }: ViajesTabProps) {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancelar</Button>
-            <Button onClick={save} className="bg-emerald-600 hover:bg-emerald-700" disabled={!form.volquetaId || !form.origen || !form.destino || !form.distanciaKm || !form.metrosCubicos}>
+            <Button variant="outline" onClick={() => setDialogOpen(false)} className="active:scale-95 transition-transform">Cancelar</Button>
+            <Button onClick={save} className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-transform h-9" disabled={!form.volquetaId || !form.origen || !form.destino || !form.distanciaKm || !form.metrosCubicos}>
               {editing ? 'Actualizar' : 'Registrar'}
             </Button>
           </DialogFooter>

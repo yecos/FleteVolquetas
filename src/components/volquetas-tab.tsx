@@ -105,20 +105,20 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
           <div className="flex items-center border rounded-lg p-1 gap-1">
             <Button
               size="sm" variant={viewMode === 'cards' ? 'default' : 'ghost'}
-              className={`h-8 w-8 p-0 ${viewMode === 'cards' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}`}
+              className={`h-9 w-9 p-0 active:scale-95 transition-transform ${viewMode === 'cards' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}`}
               onClick={() => setViewMode('cards')}
             >
               <LayoutGrid className="w-4 h-4" />
             </Button>
             <Button
               size="sm" variant={viewMode === 'table' ? 'default' : 'ghost'}
-              className={`h-8 w-8 p-0 ${viewMode === 'table' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}`}
+              className={`h-9 w-9 p-0 active:scale-95 transition-transform ${viewMode === 'table' ? 'bg-emerald-600 hover:bg-emerald-700' : ''}`}
               onClick={() => setViewMode('table')}
             >
               <List className="w-4 h-4" />
             </Button>
           </div>
-          <Button onClick={() => openDialog()} className="bg-emerald-600 hover:bg-emerald-700">
+          <Button onClick={() => openDialog()} className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-transform">
             <Plus className="w-4 h-4 mr-2" />
             Agregar
           </Button>
@@ -147,19 +147,19 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
               <CardContent className="py-16 text-center">
                 <Truck className="w-12 h-12 mx-auto text-muted-foreground/30 mb-3" />
                 <p className="text-muted-foreground">No hay volquetas registradas</p>
-                <Button onClick={() => openDialog()} variant="outline" className="mt-3 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+                <Button onClick={() => openDialog()} variant="outline" className="mt-3 border-emerald-200 text-emerald-700 hover:bg-emerald-50 active:scale-95 transition-transform">
                   <Plus className="w-4 h-4 mr-2" /> Agregar Volqueta
                 </Button>
               </CardContent>
             </Card>
           ) : (
             volquetas.map((v) => (
-              <Card key={v.id} className="group hover:shadow-md transition-all duration-300 border-0 shadow-sm overflow-hidden">
+              <Card key={v.id} className="group hover:shadow-md transition-all duration-300 border-0 shadow-sm overflow-hidden active:scale-[0.98]">
                 <div className="h-1 bg-gradient-to-r from-emerald-400 to-emerald-600" />
                 <CardContent className="p-5">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center">
+                      <div className="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center">
                         <Truck className="w-5 h-5 text-emerald-600" />
                       </div>
                       <div>
@@ -191,11 +191,11 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
                   </div>
 
                   <div className="flex items-center justify-end gap-1 pt-2 border-t">
-                    <Button size="sm" variant="ghost" className="h-8 gap-1.5 text-xs" onClick={() => openDialog(v)}>
-                      <Edit className="w-3.5 h-3.5" /> Editar
+                    <Button size="sm" variant="ghost" className="h-9 w-9 p-0 active:scale-95 transition-transform" onClick={() => openDialog(v)}>
+                      <Edit className="w-4 h-4" />
                     </Button>
-                    <Button size="sm" variant="ghost" className="h-8 gap-1.5 text-xs text-red-600 hover:text-red-700 hover:bg-red-50" onClick={() => setDeleteDialog({ open: true, id: v.id, name: v.placa })}>
-                      <Trash2 className="w-3.5 h-3.5" /> Eliminar
+                    <Button size="sm" variant="ghost" className="h-9 w-9 p-0 text-red-600 hover:text-red-700 hover:bg-red-50 active:scale-95 transition-transform" onClick={() => setDeleteDialog({ open: true, id: v.id, name: v.placa })}>
+                      <Trash2 className="w-4 h-4" />
                     </Button>
                   </div>
                 </CardContent>
@@ -254,10 +254,10 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
                         </td>
                         <td className="p-3 text-right">
                           <div className="flex items-center justify-end gap-1">
-                            <Button size="icon" variant="ghost" className="h-8 w-8" onClick={() => openDialog(v)}>
+                            <Button size="icon" variant="ghost" className="h-9 w-9 active:scale-95 transition-transform" onClick={() => openDialog(v)}>
                               <Edit className="w-4 h-4" />
                             </Button>
-                            <Button size="icon" variant="ghost" className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => setDeleteDialog({ open: true, id: v.id, name: v.placa })}>
+                            <Button size="icon" variant="ghost" className="h-9 w-9 text-red-500 hover:text-red-700 hover:bg-red-50 active:scale-95 transition-transform" onClick={() => setDeleteDialog({ open: true, id: v.id, name: v.placa })}>
                               <Trash2 className="w-4 h-4" />
                             </Button>
                           </div>
@@ -274,7 +274,7 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
 
       {/* Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editing ? 'Editar Volqueta' : 'Agregar Volqueta'}</DialogTitle>
             <DialogDescription>
@@ -282,7 +282,7 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Placa</Label>
                 <Input placeholder="ABC-123" value={form.placa} onChange={(e) => setForm({ ...form, placa: e.target.value })} />
@@ -299,7 +299,7 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
                 </Select>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Marca</Label>
                 <Input placeholder="Mercedes-Benz" value={form.marca} onChange={(e) => setForm({ ...form, marca: e.target.value })} />
@@ -309,7 +309,7 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
                 <Input placeholder="Arocs 3345" value={form.modelo} onChange={(e) => setForm({ ...form, modelo: e.target.value })} />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Capacidad (m³)</Label>
                 <Input type="number" placeholder="16" value={form.capacidadM3} onChange={(e) => setForm({ ...form, capacidadM3: e.target.value })} />
@@ -325,8 +325,8 @@ export function VolquetasTab({ volquetas, loading, onRefresh, onStatsRefresh }: 
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancelar</Button>
-            <Button onClick={save} className="bg-emerald-600 hover:bg-emerald-700" disabled={!form.placa || !form.marca || !form.conductor}>
+            <Button variant="outline" onClick={() => setDialogOpen(false)} className="active:scale-95 transition-transform">Cancelar</Button>
+            <Button onClick={save} className="bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-transform h-9" disabled={!form.placa || !form.marca || !form.conductor}>
               {editing ? 'Actualizar' : 'Guardar'}
             </Button>
           </DialogFooter>
